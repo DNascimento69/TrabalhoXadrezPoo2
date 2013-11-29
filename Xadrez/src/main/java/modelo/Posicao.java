@@ -1,10 +1,10 @@
-package pecas;
+package modelo;
 
 public class Posicao 
 {
 	private int x, y;
 
-	Posicao(int a, int b)
+	public Posicao(int a, int b)
 	{
 		this.x = a;
 		this.y = b;

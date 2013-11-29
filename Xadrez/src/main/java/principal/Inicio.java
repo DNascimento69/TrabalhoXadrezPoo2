@@ -1,4 +1,6 @@
-package pecas;
+package principal;
+
+import controle.Jogo;
 
 public class Inicio 
 {

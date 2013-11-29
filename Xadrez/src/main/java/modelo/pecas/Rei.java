@@ -1,12 +1,16 @@
-package pecas;
+package modelo.pecas;
 
 import java.util.ArrayList;
+
+import modelo.Posicao;
+import modelo.Tabuleiro;
+import modelo.Enum.ECorPeca;
 
 public class Rei extends Peca
 {
 	boolean emXeque;
 	
-	Rei(int x, int y, CorPeca c, String n)
+	public Rei(int x, int y, ECorPeca c, String n)
 	{
 		this.setPosicao(new Posicao(x, y));
 		this.setCor(c);
@@ -20,7 +24,7 @@ public class Rei extends Peca
 		boolean xeque = false;
 		
 		ArrayList<Posicao> todasPossibilidades = null;
-		if (this.getCor().compareTo(CorPeca.BRANCO) == 0)
+		if (this.getCor().compareTo(ECorPeca.BRANCO) == 0)
 		{
 			todasPossibilidades = tabuleiro.getPosicoesPossiveisPecasPretas(); // o rei branco precisa saber onde as peças pretas pode ir
 		} else {
@@ -58,7 +62,7 @@ public class Rei extends Peca
 		/* Em alguns casos o vetor com todas as possibilidades vai estar preenchido
 		 * entao separei uma função para preenche-lo antes de chegar a função principal se vier de um ponto onde nao esta preenchido
 		 */
-		if (this.getCor().compareTo(CorPeca.BRANCO) == 0)
+		if (this.getCor().compareTo(ECorPeca.BRANCO) == 0)
 		{
 			return criaListaDestinosPossiveis(tabuleiro, tabuleiro.getPosicoesPossiveisPecasPretasRei());
 		} else {

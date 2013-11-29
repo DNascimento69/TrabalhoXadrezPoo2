@@ -1,12 +1,16 @@
-package pecas;
+package modelo.pecas;
 
 import java.util.ArrayList;
+
+import modelo.Posicao;
+import modelo.Tabuleiro;
+import modelo.Enum.ECorPeca;
 
 public class Peao extends Peca
 {
 	private boolean mexeu;
 	
-	Peao(int x, int y, CorPeca c, String n)
+	public Peao(int x, int y, ECorPeca c, String n)
 	{
 		this.setPosicao(new Posicao(x, y));
 		this.setCor(c);
@@ -19,7 +23,7 @@ public class Peao extends Peca
 		ArrayList<Posicao> posicoes = new ArrayList<Posicao>();
 		Peca pecaPos = null;
 		
-		if (this.getCor().compareTo(CorPeca.BRANCO) == 0)
+		if (this.getCor().compareTo(ECorPeca.BRANCO) == 0)
 		{
 			pecaPos = Tabuleiro.temPeca(tabuleiro, new Posicao(this.getPosicao().getX(), this.getPosicao().getY() + 1));
 			if (pecaPos == null) // verifica se tem alguma peça na posicao de destino

@@ -1,12 +1,17 @@
-package pecas;
+package modelo.pecas;
 
 import java.util.ArrayList;
+
+import modelo.Posicao;
+import modelo.Tabuleiro;
+import modelo.Enum.ECorPeca;
 
 public abstract class Peca 
 {
 	private Posicao posicao;
-	private CorPeca cor;
+	private ECorPeca cor;
 	private String nome;
+	private int pontos;
 	
 	Peca() {}
 
@@ -42,16 +47,24 @@ public abstract class Peca
 		this.posicao = posicao;
 	}
 
-	public CorPeca getCor() 
+	public ECorPeca getCor() 
 	{
 		return cor;
 	}
 
-	public void setCor(CorPeca cor) 
+	public void setCor(ECorPeca cor) 
 	{
 		this.cor = cor;
 	}
 	
 	public void setMexeu(boolean m)
 	{ }
+
+	public int getPontos() {
+		return pontos;
+	}
+
+	public void setPontos(int pontos) {
+		this.pontos = pontos;
+	}
 }

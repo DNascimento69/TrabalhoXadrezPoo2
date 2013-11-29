@@ -1,13 +1,13 @@
-package pecas;
+package modelo.Enum;
 
-public enum CorPeca 
+public enum ECorPeca 
 {
 	BRANCO("Branco"),
 	PRETO("Preto");
 
 	private String nome;
 	
-	CorPeca(String n)
+	ECorPeca(String n)
 	{
 		this.nome = n;
 	}

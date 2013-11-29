@@ -1,6 +1,15 @@
-package pecas;
+package modelo;
 
 import java.util.ArrayList;
+
+import modelo.Enum.ECorPeca;
+import modelo.pecas.Bispo;
+import modelo.pecas.Cavalo;
+import modelo.pecas.Peao;
+import modelo.pecas.Peca;
+import modelo.pecas.Rainha;
+import modelo.pecas.Rei;
+import modelo.pecas.Torre;
 
 public class Tabuleiro
 {
@@ -9,12 +18,12 @@ public class Tabuleiro
 	ArrayList<Posicao> posicoesPossiveisPecasBrancas = new ArrayList<Posicao>();
 	ArrayList<Posicao> posicoesPossiveisPecasPretas = new ArrayList<Posicao>();
 
-	Tabuleiro()
+	public Tabuleiro()
 	{
 		this.iniciaPecas();
 	}
 
-	public String liberarJogada(CorPeca corDaPeca, ArrayList<Posicao> posicoes) // recebe uma jogada, faz as verificações necessarias e finaliza com a jogada realizada
+	public String liberarJogada(ECorPeca corDaPeca, ArrayList<Posicao> posicoes) // recebe uma jogada, faz as verificações necessarias e finaliza com a jogada realizada
 	{
 		int x = 0;
 		boolean achouPeca = false;
@@ -133,7 +142,7 @@ public class Tabuleiro
 	{
 		for (int i = 0; i < this.pecas.size(); i++)
 		{
-			if (this.pecas.get(i).getCor().compareTo(CorPeca.BRANCO) == 0)
+			if (this.pecas.get(i).getCor().compareTo(ECorPeca.BRANCO) == 0)
 			{
 				this.posicoesPossiveisPecasBrancas.addAll(this.pecas.get(i).criaListaDestinosPossiveis(this));
 			}
@@ -145,7 +154,7 @@ public class Tabuleiro
 	{
 		for (int i = 0; i < this.pecas.size(); i++)
 		{
-			if (this.pecas.get(i).getCor().compareTo(CorPeca.PRETO) == 0)
+			if (this.pecas.get(i).getCor().compareTo(ECorPeca.PRETO) == 0)
 			{
 				this.posicoesPossiveisPecasPretas.addAll(this.pecas.get(i).criaListaDestinosPossiveis(this));
 			}
@@ -157,7 +166,7 @@ public class Tabuleiro
 	{
 		for (int i = 0; i < this.pecas.size(); i++)
 		{
-			if ((this.pecas.get(i).getCor().compareTo(CorPeca.BRANCO) == 0) && !(this.pecas.get(i) instanceof Rei))
+			if ((this.pecas.get(i).getCor().compareTo(ECorPeca.BRANCO) == 0) && !(this.pecas.get(i) instanceof Rei))
 			{
 				this.posicoesPossiveisPecasBrancas.addAll(this.pecas.get(i).criaListaDestinosPossiveis(this));
 			}
@@ -169,7 +178,7 @@ public class Tabuleiro
 	{
 		for (int i = 0; i < this.pecas.size(); i++)
 		{
-			if ((this.pecas.get(i).getCor().compareTo(CorPeca.PRETO) == 0) && !(this.pecas.get(i) instanceof Rei))
+			if ((this.pecas.get(i).getCor().compareTo(ECorPeca.PRETO) == 0) && !(this.pecas.get(i) instanceof Rei))
 			{
 				this.posicoesPossiveisPecasPretas.addAll(this.pecas.get(i).criaListaDestinosPossiveis(this));
 			}
@@ -210,28 +219,28 @@ public class Tabuleiro
 		
 		System.out.println("CRIANDO PEÇAS");
 		
-		this.pecas.add(new Torre(0, 0, CorPeca.BRANCO, "TORRE"));
-		this.pecas.add(new Cavalo(1, 0, CorPeca.BRANCO, "CAVALO"));
-		this.pecas.add(new Bispo(2, 0, CorPeca.BRANCO, "BISPO"));
-		this.pecas.add(new Rainha(3, 0, CorPeca.BRANCO, "RAINHA"));
-		this.pecas.add(new Rei(4, 0, CorPeca.BRANCO, "REI"));
-		this.pecas.add(new Bispo(5, 0, CorPeca.BRANCO, "BISPO"));
-		this.pecas.add(new Cavalo(6, 0, CorPeca.BRANCO, "CAVALO"));
-		this.pecas.add(new Torre(7, 0, CorPeca.BRANCO, "TORRE"));
+		this.pecas.add(new Torre(0, 0, ECorPeca.BRANCO, "TORRE"));
+		this.pecas.add(new Cavalo(1, 0, ECorPeca.BRANCO, "CAVALO"));
+		this.pecas.add(new Bispo(2, 0, ECorPeca.BRANCO, "BISPO"));
+		this.pecas.add(new Rainha(3, 0, ECorPeca.BRANCO, "RAINHA"));
+		this.pecas.add(new Rei(4, 0, ECorPeca.BRANCO, "REI"));
+		this.pecas.add(new Bispo(5, 0, ECorPeca.BRANCO, "BISPO"));
+		this.pecas.add(new Cavalo(6, 0, ECorPeca.BRANCO, "CAVALO"));
+		this.pecas.add(new Torre(7, 0, ECorPeca.BRANCO, "TORRE"));
 
-		this.pecas.add(new Torre(0, 7, CorPeca.PRETO, "TORRE"));
-		this.pecas.add(new Cavalo(1, 7, CorPeca.PRETO, "CAVALO"));
-		this.pecas.add(new Bispo(2, 7, CorPeca.PRETO, "BISPO"));
-		this.pecas.add(new Rainha(3, 7, CorPeca.PRETO, "RAINHA"));
-		this.pecas.add(new Rei(4, 7, CorPeca.PRETO, "REI"));
-		this.pecas.add(new Bispo(5, 7, CorPeca.PRETO, "BISPO"));
-		this.pecas.add(new Cavalo(6, 7, CorPeca.PRETO, "CAVALO"));
-		this.pecas.add(new Torre(7, 7, CorPeca.PRETO, "TORRE"));
+		this.pecas.add(new Torre(0, 7, ECorPeca.PRETO, "TORRE"));
+		this.pecas.add(new Cavalo(1, 7, ECorPeca.PRETO, "CAVALO"));
+		this.pecas.add(new Bispo(2, 7, ECorPeca.PRETO, "BISPO"));
+		this.pecas.add(new Rainha(3, 7, ECorPeca.PRETO, "RAINHA"));
+		this.pecas.add(new Rei(4, 7, ECorPeca.PRETO, "REI"));
+		this.pecas.add(new Bispo(5, 7, ECorPeca.PRETO, "BISPO"));
+		this.pecas.add(new Cavalo(6, 7, ECorPeca.PRETO, "CAVALO"));
+		this.pecas.add(new Torre(7, 7, ECorPeca.PRETO, "TORRE"));
 		
 		for (int i = 0; i < 8; i++) // Os peões podem ser colocados por um loop
 		{
-			this.pecas.add(new Peao(i, 1, CorPeca.BRANCO, "PEAO"));
-			this.pecas.add(new Peao(i, 6, CorPeca.PRETO, "PEAO"));
+			this.pecas.add(new Peao(i, 1, ECorPeca.BRANCO, "PEAO"));
+			this.pecas.add(new Peao(i, 6, ECorPeca.PRETO, "PEAO"));
 		}
 		
 		System.out.println("FIM CRIAR PEÇAS");

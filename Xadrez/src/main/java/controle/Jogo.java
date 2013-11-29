@@ -1,13 +1,17 @@
-package pecas;
+package controle;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import modelo.Posicao;
+import modelo.Tabuleiro;
+import modelo.Enum.ECorPeca;
 
 public class Jogo 
 {
 	Tabuleiro tabuleiro = null;
 	
-	Jogo() 
+	public Jogo() 
 	{
 		tabuleiro = new Tabuleiro();
 		this.jogar();
@@ -34,7 +38,7 @@ public class Jogo
 //					posicoes.add(new Posicao(0, 1));
 //					posicoes.add(new Posicao(0, 3));
 					
-					String msg = tabuleiro.liberarJogada(CorPeca.BRANCO, posicoes);
+					String msg = tabuleiro.liberarJogada(ECorPeca.BRANCO, posicoes);
 					
 					System.out.println(msg);
 					
@@ -55,7 +59,7 @@ public class Jogo
 					
 					ArrayList<Posicao> posicoes = this.novaJogada();
 					
-					String msg = tabuleiro.liberarJogada(CorPeca.PRETO, posicoes);
+					String msg = tabuleiro.liberarJogada(ECorPeca.PRETO, posicoes);
 					
 					System.out.println(msg);
 					
@@ -111,7 +115,9 @@ public class Jogo
 			System.out.print("Informe a posição Y: ");
 			y = in.nextInt();
 		}
-			
+		
+		in.close();
+
 		return new Posicao(x, y);
 	}
 }

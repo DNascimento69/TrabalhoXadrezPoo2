@@ -1,10 +1,14 @@
-package pecas;
+package modelo.pecas;
 
 import java.util.ArrayList;
 
+import modelo.Posicao;
+import modelo.Tabuleiro;
+import modelo.Enum.ECorPeca;
+
 public class Cavalo extends Peca
 {
-	Cavalo(int x, int y, CorPeca c, String n)
+	public Cavalo(int x, int y, ECorPeca c, String n)
 	{
 		this.setPosicao(new Posicao(x, y));
 		this.setCor(c);

@@ -1,30 +1,32 @@
-package pecas;
+package modelo.pecas;
 
 import java.util.ArrayList;
 
-public class Bispo extends Peca
+import modelo.Posicao;
+import modelo.Tabuleiro;
+import modelo.Enum.ECorPeca;
+
+public class Torre extends Peca
 {
-	Bispo(int x, int y, CorPeca c, String n)
+	public Torre(int x, int y, ECorPeca c, String n)
 	{
 		this.setPosicao(new Posicao(x, y));
 		this.setCor(c);
 		this.setNome(n);
 	}
-	
-	// esta função retorna TODAS as possibilidades de destinos do Bispo, incluindo as que ele pode comer alguma peça
+
+	// esta função retorna TODAS as possibilidades de destinos da Torre, incluindo as que ela pode comer alguma peça
 	public ArrayList<Posicao> criaListaDestinosPossiveis(Tabuleiro tabuleiro)
 	{
-		
-		// o bispo pode andar em tres direçoes --  direita ou esquerda, para cima ou para baixo
+		// a Torre pode andar para Norte, Sul, Leste e Oeste ateh o fim do tabuleiro ou ateh encontrar uma peça
 		
 		ArrayList<Posicao> posicoes = new ArrayList<Posicao>();
 		
-		// esquerda - para cima
-		int buscaX = this.getPosicao().getX() - 1;
+		// Norte
 		int buscaY = this.getPosicao().getY() + 1;
-		while ((buscaX >= 0) && (buscaY <= 7))
+		while (buscaY <= 7)
 		{
-			Posicao novaPos = new Posicao(buscaX, buscaY);
+			Posicao novaPos = new Posicao(this.getPosicao().getX(), buscaY);
 			Peca pecaPos = Tabuleiro.temPeca(tabuleiro, novaPos);
 			
 			if(pecaPos != null) // verifica se tem alguma peça na posicao de destino
@@ -36,16 +38,52 @@ public class Bispo extends Peca
 				posicoes.add(novaPos);
 			}
 			
-			buscaX--;
 			buscaY++;
 		}
 		
-		// esquerda - para baixo
+		// Sul
+		buscaY = this.getPosicao().getY() - 1;
+		while (buscaY >= 0)
+		{
+			Posicao novaPos = new Posicao(this.getPosicao().getX(), buscaY);
+			Peca pecaPos = Tabuleiro.temPeca(tabuleiro, novaPos);
+			
+			if(pecaPos != null) // verifica se tem alguma peça na posicao de destino
+			{
+				if(this.getCor() != pecaPos.getCor()) // verifica se a peça da posiçao de destino pode ser comida pela que esta sendo usada
+					posicoes.add(novaPos);
+				break; // sai do loop pois a peça nao pode andar mais que este ponto
+			} else {
+				posicoes.add(novaPos);
+			}
+			
+			buscaY--;
+		}
+		
+		// Leste
+		int buscaX = this.getPosicao().getX() + 1;
+		while (buscaX <= 7)
+		{
+			Posicao novaPos = new Posicao(buscaX, this.getPosicao().getY());
+			Peca pecaPos = Tabuleiro.temPeca(tabuleiro, novaPos);
+			
+			if(pecaPos != null) // verifica se tem alguma peça na posicao de destino
+			{
+				if(this.getCor() != pecaPos.getCor()) // verifica se a peça da posiçao de destino pode ser comida pela que esta sendo usada
+					posicoes.add(novaPos);
+				break; // sai do loop pois a peça nao pode andar mais que este ponto
+			} else {
+				posicoes.add(novaPos);
+			}
+			
+			buscaX++;
+		}
+		
+		// Oeste
 		buscaX = this.getPosicao().getX() - 1;
-		buscaY = this.getPosicao().getY() - 1;
-		while((buscaX >= 0) && (buscaY >= 0))
+		while (buscaX >= 0)
 		{
-			Posicao novaPos = new Posicao(buscaX, buscaY);
+			Posicao novaPos = new Posicao(buscaX, this.getPosicao().getY());
 			Peca pecaPos = Tabuleiro.temPeca(tabuleiro, novaPos);
 			
 			if(pecaPos != null) // verifica se tem alguma peça na posicao de destino
@@ -58,49 +96,6 @@ public class Bispo extends Peca
 			}
 			
 			buscaX--;
-			buscaY--;
-		}
-		
-		// direita - para cima
-		buscaX = this.getPosicao().getX() + 1;
-		buscaY = this.getPosicao().getY() + 1;
-		while((buscaX <= 7) && (buscaY <= 7))
-		{
-			Posicao novaPos = new Posicao(buscaX, buscaY);
-			Peca pecaPos = Tabuleiro.temPeca(tabuleiro, novaPos);
-			
-			if(pecaPos != null) // verifica se tem alguma peça na posicao de destino
-			{
-				if(this.getCor() != pecaPos.getCor()) // verifica se a peça da posiçao de destino pode ser comida pela que esta sendo usada
-					posicoes.add(novaPos);
-				break; // sai do loop pois a peça nao pode andar mais que este ponto
-			} else {
-				posicoes.add(novaPos);
-			}
-			
-			buscaX++;
-			buscaY++;
-		}
-		
-		// direita - para baixo
-		buscaX = this.getPosicao().getX() + 1;
-		buscaY = this.getPosicao().getY() - 1;
-		while((buscaX <= 7) && (buscaY >= 0))
-		{
-			Posicao novaPos = new Posicao(buscaX, buscaY);
-			Peca pecaPos = Tabuleiro.temPeca(tabuleiro, novaPos);
-			
-			if(pecaPos != null) // verifica se tem alguma peça na posicao de destino
-			{
-				if(this.getCor() != pecaPos.getCor()) // verifica se a peça da posiçao de destino pode ser comida pela que esta sendo usada
-					posicoes.add(novaPos);
-				break; // sai do loop pois a peça nao pode andar mais que este ponto
-			} else {
-				posicoes.add(novaPos);
-			}
-			
-			buscaX++;
-			buscaY--;
 		}
 		
 		return posicoes;

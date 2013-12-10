@@ -6,11 +6,9 @@ import modelo.cdp.Tabuleiro;
 
 public class Cavalo extends Peca {
 	
-//	public Cavalo(int x, int y, ECorPeca c, String n) {
-//		this.setPosicao(new Posicao(x, y));
-//		this.setCor(c);
-//		this.setNome(n);
-//	}
+	public Cavalo() {
+		setPontos(3);
+	}
 	
 	// esta função retorna TODAS as possibilidades de destinos do Cavalo, incluindo as que ele pode comer alguma peça
 	public ArrayList<Posicao> criaListaDestinosPossiveis(Tabuleiro tabuleiro)

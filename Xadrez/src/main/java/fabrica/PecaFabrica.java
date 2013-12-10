@@ -1,15 +1,10 @@
 package fabrica;
 
+import prototipo.PecaPrototipo;
 import modelo.cdp.Posicao;
 import modelo.cdp.Enum.ECorPeca;
 import modelo.cdp.Enum.EPeca;
-import modelo.cdp.pecas.Bispo;
-import modelo.cdp.pecas.Cavalo;
-import modelo.cdp.pecas.Peao;
 import modelo.cdp.pecas.Peca;
-import modelo.cdp.pecas.Rainha;
-import modelo.cdp.pecas.Rei;
-import modelo.cdp.pecas.Torre;
 
 public class PecaFabrica {
 	
@@ -23,21 +18,21 @@ public class PecaFabrica {
 	
 	public Peca selecionarPeca(EPeca e) {
 		if (e == EPeca.PEAO) {
-			return new Peao();
+			return PecaPrototipo.getInstance().createPeao();
 		} else {
 			if (e == EPeca.CAVALO) {
-				return new Cavalo();
+				return PecaPrototipo.getInstance().createCavalo();
 			} else {
 				if (e == EPeca.BISPO) {
-					return new Bispo();
+					return PecaPrototipo.getInstance().createBispo();
 				} else {
 					if (e == EPeca.TORRE) {
-						return new Torre();
+						return PecaPrototipo.getInstance().createTorre();
 					} else {
 						if (e == EPeca.RAINHA) {
-							return new Rainha();
+							return PecaPrototipo.getInstance().createRainha();
 						} else {
-							return new Rei();
+							return PecaPrototipo.getInstance().createRei();
 						}
 					}
 				}

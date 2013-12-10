@@ -6,11 +6,9 @@ import modelo.cdp.Tabuleiro;
 
 public class Bispo extends Peca {
 	
-//	public Bispo(int x, int y, ECorPeca c, String n) {
-//		this.setPosicao(new Posicao(x, y));
-//		this.setCor(c);
-//		this.setNome(n);
-//	}
+	public Bispo() {
+		setPontos(3);
+	}
 	
 	// esta função retorna TODAS as possibilidades de destinos do Bispo, incluindo as que ele pode comer alguma peça
 	public ArrayList<Posicao> criaListaDestinosPossiveis(Tabuleiro tabuleiro) {

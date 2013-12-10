@@ -6,7 +6,7 @@ import modelo.cdp.Posicao;
 import modelo.cdp.Enum.ECorPeca;
 import modelo.cdp.Tabuleiro;
 
-public abstract class Peca {
+public abstract class Peca implements Cloneable {
 	private Posicao posicao;
 	private ECorPeca cor;
 	private String nome;
@@ -14,8 +14,7 @@ public abstract class Peca {
 
 	Peca() { }
 
-	public abstract ArrayList<Posicao> criaListaDestinosPossiveis(
-			Tabuleiro tabuleiro);
+	public abstract ArrayList<Posicao> criaListaDestinosPossiveis(Tabuleiro tabuleiro);
 
 	public String getNome() {
 		return nome;
@@ -58,5 +57,15 @@ public abstract class Peca {
 
 	public void setPontos(int pontos) {
 		this.pontos = pontos;
+	}
+
+	public Object clone() {
+		Object object = null;
+		try {
+			object = super.clone();
+		} catch (CloneNotSupportedException exception) {
+			System.err.println("A peca nao foi clonada");
+		}
+		return object;
 	}
 }

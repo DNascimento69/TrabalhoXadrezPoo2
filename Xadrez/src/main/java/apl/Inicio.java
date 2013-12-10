@@ -1,10 +1,10 @@
 package apl;
 
-import controle.cci.PrincipalControle;
+import controle.cci.PrincipalViewControle;
 
 public class Inicio {
 	public static void main(String[] args) {
-		PrincipalControle principalControle = new PrincipalControle();
+		PrincipalViewControle principalControle = new PrincipalViewControle();
 		
 		principalControle.inicio();
 	}

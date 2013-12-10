@@ -6,11 +6,9 @@ import modelo.cdp.Tabuleiro;
 
 public class Torre extends Peca {
 	
-//	public Torre(int x, int y, ECorPeca c, String n) {
-//		this.setPosicao(new Posicao(x, y));
-//		this.setCor(c);
-//		this.setNome(n);
-//	}
+	public Torre() {
+		setPontos(5);
+	}
 
 	// esta função retorna TODAS as possibilidades de destinos da Torre, incluindo as que ela pode comer alguma peça
 	public ArrayList<Posicao> criaListaDestinosPossiveis(Tabuleiro tabuleiro)

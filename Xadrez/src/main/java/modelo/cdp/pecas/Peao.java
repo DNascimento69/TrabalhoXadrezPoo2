@@ -8,12 +8,9 @@ import modelo.cdp.Enum.ECorPeca;
 public class Peao extends Peca {
 	private boolean mexeu;
 	
-//	public Peao(int x, int y, ECorPeca c, String n) {
-//		this.setPosicao(new Posicao(x, y));
-//		this.setCor(c);
-//		this.setNome(n);
-//		this.mexeu = false;
-//	}
+	public Peao() {
+		setPontos(1);
+	}
 
 	public ArrayList<Posicao> criaListaDestinosPossiveis(Tabuleiro tabuleiro) { // vai retornar todos os pontos que o Peao pode ir
 		ArrayList<Posicao> posicoes = new ArrayList<Posicao>();

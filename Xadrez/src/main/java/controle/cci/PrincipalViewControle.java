@@ -4,7 +4,7 @@ import controle.cgt.JogoControle;
 import util.LeitorUtil;
 import visao.cih.PrincipalView;
 
-public class PrincipalControle {
+public class PrincipalViewControle {
 
 	private PrincipalView principalView = new PrincipalView();
 	private JogoControle jogoControle = new JogoControle();

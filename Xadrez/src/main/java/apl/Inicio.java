@@ -1,9 +1,11 @@
 package apl;
 
-import controle.cgt.JogoControle;
+import controle.cci.PrincipalControle;
 
 public class Inicio {
 	public static void main(String[] args) {
-		JogoControle.getJogoCtrl().menu();
+		PrincipalControle principalControle = new PrincipalControle();
+		
+		principalControle.inicio();
 	}
 }

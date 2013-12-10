@@ -1,40 +1,31 @@
 package modelo.cdp.pecas;
 
 import java.util.ArrayList;
-
 import modelo.cdp.Posicao;
 import modelo.cdp.Tabuleiro;
 import modelo.cdp.Enum.ECorPeca;
 
-public class Peao extends Peca
-{
+public class Peao extends Peca {
 	private boolean mexeu;
 	
-	public Peao(int x, int y, ECorPeca c, String n)
-	{
-		this.setPosicao(new Posicao(x, y));
-		this.setCor(c);
-		this.setNome(n);
-		this.mexeu = false;
-	}
+//	public Peao(int x, int y, ECorPeca c, String n) {
+//		this.setPosicao(new Posicao(x, y));
+//		this.setCor(c);
+//		this.setNome(n);
+//		this.mexeu = false;
+//	}
 
-	public ArrayList<Posicao> criaListaDestinosPossiveis(Tabuleiro tabuleiro) // vai retornar todos os pontos que o Peao pode ir
-	{
+	public ArrayList<Posicao> criaListaDestinosPossiveis(Tabuleiro tabuleiro) { // vai retornar todos os pontos que o Peao pode ir
 		ArrayList<Posicao> posicoes = new ArrayList<Posicao>();
 		Peca pecaPos = null;
 		
-		if (this.getCor().compareTo(ECorPeca.BRANCO) == 0)
-		{
+		if (this.getCor().compareTo(ECorPeca.BRANCO) == 0) {
 			pecaPos = Tabuleiro.temPeca(tabuleiro, new Posicao(this.getPosicao().getX(), this.getPosicao().getY() + 1));
-			if (pecaPos == null) // verifica se tem alguma peça na posicao de destino
-			{
+			if (pecaPos == null) { // verifica se tem alguma peça na posicao de destino
 				posicoes.add(new Posicao(this.getPosicao().getX(), this.getPosicao().getY() + 1)); // adiciona a posição padrão que o peao pode ir, que é uma a frente
-				
-				if (!this.mexeu) // o peão pode andar duas casa se ele ainda não foi movido
-				{
+				if (!this.mexeu) { // o peão pode andar duas casa se ele ainda não foi movido
 					pecaPos = Tabuleiro.temPeca(tabuleiro, new Posicao(this.getPosicao().getX(), this.getPosicao().getY() + 2));
-					if(pecaPos == null) // verifica se tem alguma peça na posicao de destino
-					{
+					if(pecaPos == null) { // verifica se tem alguma peça na posicao de destino
 						posicoes.add(new Posicao(this.getPosicao().getX(), this.getPosicao().getY() + 2)); // o peao pode se mover duas casas, se ainda nao se moveu
 					}
 				}
@@ -45,38 +36,31 @@ public class Peao extends Peca
 			// direita
 			int buscaX = this.getPosicao().getX() + 1;
 			int buscaY = this.getPosicao().getY() + 1;
-			if ((buscaX <= 7) && (buscaY <= 7))
-			{
+			if ((buscaX <= 7) && (buscaY <= 7)) {
 				Posicao novaPos = new Posicao(buscaX, buscaY);
 				pecaPos = Tabuleiro.temPeca(tabuleiro, novaPos);
-				if ((pecaPos != null) && (this.getCor() != pecaPos.getCor())) // verifica se tem alguma peça na posicao de destino
-				{
+				if ((pecaPos != null) && (this.getCor() != pecaPos.getCor())) { // verifica se tem alguma peça na posicao de destino
 					posicoes.add(novaPos);
 				}
 			}
 			
 			//esquerda
 			buscaX = this.getPosicao().getX() - 1;
-			if ((buscaX >= 0) && (buscaY <= 7))
-			{
+			if ((buscaX >= 0) && (buscaY <= 7)) {
 				Posicao novaPos = new Posicao(buscaX, buscaY);
 				pecaPos = Tabuleiro.temPeca(tabuleiro, novaPos);
-				if ((pecaPos != null) && (this.getCor() != pecaPos.getCor())) // verifica se tem alguma peça na posicao de destino
-				{
+				if ((pecaPos != null) && (this.getCor() != pecaPos.getCor())) { // verifica se tem alguma peça na posicao de destino
 					posicoes.add(novaPos);
 				}
 			}
 		} else {
 			pecaPos = Tabuleiro.temPeca(tabuleiro, new Posicao(this.getPosicao().getX(), this.getPosicao().getY() - 1));
-			if (pecaPos == null) // verifica se tem alguma peça na posicao de destino
-			{
+			if (pecaPos == null) { // verifica se tem alguma peça na posicao de destino
 				posicoes.add(new Posicao(this.getPosicao().getX(), this.getPosicao().getY() - 1)); // adiciona a posição padrão que o peao pode ir, que é uma a frente
 				
-				if (!this.mexeu) // o peão pode andar duas casa se ele ainda não foi movido
-				{
+				if (!this.mexeu) { // o peão pode andar duas casa se ele ainda não foi movido
 					pecaPos = Tabuleiro.temPeca(tabuleiro, new Posicao(this.getPosicao().getX(), this.getPosicao().getY() - 2));
-					if(pecaPos == null) // verifica se tem alguma peça na posicao de destino
-					{
+					if(pecaPos == null) { // verifica se tem alguma peça na posicao de destino
 						posicoes.add(new Posicao(this.getPosicao().getX(), this.getPosicao().getY() - 2)); // o peao pode se mover duas casas, se ainda nao se moveu
 					}
 				}
@@ -87,24 +71,20 @@ public class Peao extends Peca
 			// direita
 			int buscaX = this.getPosicao().getX() + 1;
 			int buscaY = this.getPosicao().getY() - 1;
-			if ((buscaX <= 7) && (buscaY <= 7))
-			{
+			if ((buscaX <= 7) && (buscaY <= 7)) {
 				Posicao novaPos = new Posicao(buscaX, buscaY);
 				pecaPos = Tabuleiro.temPeca(tabuleiro, novaPos);
-				if ((pecaPos != null) && (this.getCor() != pecaPos.getCor())) // verifica se tem alguma peça na posicao de destino
-				{
+				if ((pecaPos != null) && (this.getCor() != pecaPos.getCor())) { // verifica se tem alguma peça na posicao de destino
 					posicoes.add(novaPos);
 				}
 			}
 			
 			//esquerda
 			buscaX = this.getPosicao().getX() - 1;
-			if ((buscaX >= 0) && (buscaY <= 7))
-			{
+			if ((buscaX >= 0) && (buscaY <= 7)) {
 				Posicao novaPos = new Posicao(buscaX, buscaY);
 				pecaPos = Tabuleiro.temPeca(tabuleiro, novaPos);
-				if ((pecaPos != null) && (this.getCor() != pecaPos.getCor())) // verifica se tem alguma peça na posicao de destino
-				{
+				if ((pecaPos != null) && (this.getCor() != pecaPos.getCor())) { // verifica se tem alguma peça na posicao de destino
 					posicoes.add(novaPos);
 				}
 			}
@@ -112,23 +92,18 @@ public class Peao extends Peca
 		return posicoes;
 	}
 	
-	public void setMexeu(boolean m)
-	{
+	public void setMexeu(boolean m) {
 		this.mexeu = m;
 	}
 	
-	public void setPosicao(Posicao posicao, Tabuleiro tabuleiro) 
-	{	
+	public void setPosicao(Posicao posicao, Tabuleiro tabuleiro) {
 		super.setPosicao(posicao);
-		if ((posicao.getY() == 7) || (posicao.getY() == 0))
-		{
+		if ((posicao.getY() == 7) || (posicao.getY() == 0)) {
 			int x = 0;
 			boolean achou = false;
-			while ((x < tabuleiro.getPecas().size()) && (!achou)) // verificando em toda lista de posiçoes possiveis para aquela peça que sera movida
-			{
+			while ((x < tabuleiro.getPecas().size()) && (!achou)) { // verificando em toda lista de posiçoes possiveis para aquela peça que sera movida
 				if ((tabuleiro.getPecas().get(x).getPosicao().getX() == posicao.getX()) 
-						&& (tabuleiro.getPecas().get(x).getPosicao().getY() == posicao.getY())) // se for uma das posiçoes validas, ele retorna true
-				{
+						&& (tabuleiro.getPecas().get(x).getPosicao().getY() == posicao.getY())) { // se for uma das posiçoes validas, ele retorna true
 					tabuleiro.getPecas().remove(x);
 					tabuleiro.getPecas().add(new Rainha(posicao.getX(), posicao.getY(), this.getCor(), "RAINHA"));
 				}

@@ -6,17 +6,15 @@ import modelo.cdp.Posicao;
 import modelo.cdp.Tabuleiro;
 import modelo.cdp.Enum.ECorPeca;
 
-public class Rei extends Peca
-{
+public class Rei extends Peca {
 	boolean emXeque;
 	
-	public Rei(int x, int y, ECorPeca c, String n)
-	{
-		this.setPosicao(new Posicao(x, y));
-		this.setCor(c);
-		this.setNome(n);
-		this.emXeque = false;
-	}
+//	public Rei(int x, int y, ECorPeca c, String n) {
+//		this.setPosicao(new Posicao(x, y));
+//		this.setCor(c);
+//		this.setNome(n);
+//		this.emXeque = false;
+//	}
 	
 	public String verificaXeque(Tabuleiro tabuleiro) // pega todas as jogadas possiveis para o exercito inimigo e verifica se o rei esta em uma delas
 	{

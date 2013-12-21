@@ -1,13 +1,16 @@
 package modelo.cdp.pecas;
 
 import java.util.ArrayList;
+
 import modelo.cdp.Posicao;
 import modelo.cdp.Tabuleiro;
+import modelo.cdp.Enum.EPeca;
 
 public class Rainha extends Peca {
 	
 	public Rainha() {
 		setPontos(9);
+		setTipo(EPeca.RAINHA);
 	}
 
 	// esta função retorna TODAS as possibilidades de destinos da Rainha, incluindo as que ela pode comer alguma peça

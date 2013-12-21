@@ -1,13 +1,16 @@
 package modelo.cdp.pecas;
 
 import java.util.ArrayList;
+
 import modelo.cdp.Posicao;
 import modelo.cdp.Tabuleiro;
+import modelo.cdp.Enum.EPeca;
 
 public class Bispo extends Peca {
 	
 	public Bispo() {
 		setPontos(3);
+		setTipo(EPeca.BISPO);
 	}
 	
 	// esta função retorna TODAS as possibilidades de destinos do Bispo, incluindo as que ele pode comer alguma peça

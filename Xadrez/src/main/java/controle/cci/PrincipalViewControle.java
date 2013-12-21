@@ -1,25 +1,30 @@
 package controle.cci;
 
 import controle.cgt.JogoControle;
-import util.LeitorUtil;
 import visao.cih.PrincipalView;
 
 public class PrincipalViewControle {
 
-	private PrincipalView principalView = new PrincipalView();
-	private JogoControle jogoControle = new JogoControle();
+	private PrincipalView principalView = null;
+	private JogoControle jogoControle = null;
+	
+	public PrincipalViewControle() {
+		this.principalView = new PrincipalView();
+	}
 
 	public void inicio() {
 		principalView.menu();
-		int opcao = LeitorUtil.lervalorInteiro();
+		int opcao = 1;
+//		opcao = LeitorUtil.lervalorInteiro();
 
 		switch (opcao) {
 			case 1: {
-				jogoControle.;
+				jogoControle = new JogoControle();
+				jogoControle.novoJogo();
 				break;
 			}
 			case 2: {
-				opcaoCalculadora = ECalc.DOUBLE;
+				
 				break;
 			}
 			case 3: {

@@ -1,4 +1,4 @@
-package visao.cih;
+package InterfaceGrafica;
 
 import java.awt.Color;
 import java.awt.event.InputEvent;
@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 
 public class Casa extends JLabel implements MouseListener, MouseMotionListener {
-	private static final long serialVersionUID = 1L;
 	int x, y, xTabuleiro, yTabuleiro;
 	Boolean selecionada;
 	Peca peca;
@@ -22,8 +21,7 @@ public class Casa extends JLabel implements MouseListener, MouseMotionListener {
 
 	// BorderFactory borderFactory;
 
-	public Casa(int x, int y, int xTabuleriro, int yTabuleiro,
-			Tabuleiro tabuleiro) {
+	public Casa(int x, int y, int xTabuleriro, int yTabuleiro, Tabuleiro tabuleiro) {
 		super();
 		inicializar(x, y, xTabuleriro, yTabuleiro, tabuleiro);
 		setPeca(null);
@@ -35,8 +33,7 @@ public class Casa extends JLabel implements MouseListener, MouseMotionListener {
 		setPeca(peca);
 	}
 
-	private void inicializar(int x, int y, int xTabuleiro, int yTabuleiro,
-			Tabuleiro tabuleiro) {
+	private void inicializar(int x, int y, int xTabuleiro, int yTabuleiro, Tabuleiro tabuleiro) {
 		this.x = x;
 		this.y = y;
 		this.xTabuleiro = xTabuleiro;
@@ -87,9 +84,11 @@ public class Casa extends JLabel implements MouseListener, MouseMotionListener {
 			setBorder(bordaNada);
 	}
 
+	@Override
 	public void mouseDragged(MouseEvent me) {
 	}
 
+	@Override
 	public void mouseMoved(MouseEvent me) {
 		// Se não estiver selecionado
 		if (!getSelecionada())
@@ -101,9 +100,10 @@ public class Casa extends JLabel implements MouseListener, MouseMotionListener {
 			}
 	}
 
-	public void mouseClicked(MouseEvent me) {
-	}
+	@Override
+	public void mouseClicked(MouseEvent me) { }
 
+	@Override
 	public void mousePressed(MouseEvent me) {
 		// Se não existir nenhuma casa selecionada e a casa onde o click
 		// ocorreu não tiver peça. O método encerra.
@@ -123,17 +123,14 @@ public class Casa extends JLabel implements MouseListener, MouseMotionListener {
 					}
 				}
 			}
-			// Se existir uma casa selecionada e o click tiver sido feito com o
-			// botão esquerdo do mouse, o método mover peça da
-			// classe tabuleiro será chamado, para mover a peça da casa
-			// selecionada para esta casa.
-		} else {
+		}
+		// Se existir uma casa selecionada e o click tiver sido feito com o botão esquerdo do mouse, o método mover peça da classe tabuleiro será chamado, para mover a peça da casa selecionada para esta casa.
+		else {
 			if (tabuleiro.getCasaSelecionada() != this)
 				if ((me.getModifiers() & InputEvent.BUTTON3_MASK) == 0) {
 					if (estaEmMim(me)) {
 						tabuleiro.getCasaSelecionada().setSelecionada(false);
-						tabuleiro.moverPeca(tabuleiro.getCasaSelecionada(),
-								this);
+						tabuleiro.moverPeca(tabuleiro.getCasaSelecionada(), this);
 						tabuleiro.setCasaSelecionada(null);
 					}
 				}
@@ -147,12 +144,15 @@ public class Casa extends JLabel implements MouseListener, MouseMotionListener {
 		}
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent me) {
 	}
 
+	@Override
 	public void mouseEntered(MouseEvent me) {
 	}
 
+	@Override
 	public void mouseExited(MouseEvent me) {
 	}
 

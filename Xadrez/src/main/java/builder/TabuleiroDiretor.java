@@ -12,5 +12,4 @@ public class TabuleiroDiretor {
 		construtor.construirPeoes();
 		return construtor.getTabuleiro();
 	}
-	
 }

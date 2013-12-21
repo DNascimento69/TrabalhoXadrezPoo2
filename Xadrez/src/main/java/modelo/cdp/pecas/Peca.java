@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 import modelo.cdp.Posicao;
 import modelo.cdp.Enum.ECorPeca;
+import modelo.cdp.Enum.EPeca;
 import modelo.cdp.Tabuleiro;
 
 public abstract class Peca implements Cloneable {
-	private Posicao posicao;
-	private ECorPeca cor;
-	private String nome;
+	private Posicao posicao = null;
+	private ECorPeca cor = null;
+	private String nome = null;
 	private int pontos;
+	private EPeca tipo = null;
 
 	Peca() { }
 
@@ -67,5 +69,13 @@ public abstract class Peca implements Cloneable {
 			System.err.println("A peca nao foi clonada");
 		}
 		return object;
+	}
+
+	public EPeca getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(EPeca tipo) {
+		this.tipo = tipo;
 	}
 }

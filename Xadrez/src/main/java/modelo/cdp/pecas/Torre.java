@@ -1,13 +1,16 @@
 package modelo.cdp.pecas;
 
 import java.util.ArrayList;
+
 import modelo.cdp.Posicao;
 import modelo.cdp.Tabuleiro;
+import modelo.cdp.Enum.EPeca;
 
 public class Torre extends Peca {
 	
 	public Torre() {
 		setPontos(5);
+		setTipo(EPeca.BISPO);
 	}
 
 	// esta função retorna TODAS as possibilidades de destinos da Torre, incluindo as que ela pode comer alguma peça
@@ -17,7 +20,7 @@ public class Torre extends Peca {
 		
 		ArrayList<Posicao> posicoes = new ArrayList<Posicao>();
 		
-		// Norte
+		// Leste
 		int buscaY = this.getPosicao().getY() + 1;
 		while (buscaY <= 7)
 		{
@@ -36,7 +39,7 @@ public class Torre extends Peca {
 			buscaY++;
 		}
 		
-		// Sul
+		// Oeste
 		buscaY = this.getPosicao().getY() - 1;
 		while (buscaY >= 0)
 		{
@@ -55,7 +58,7 @@ public class Torre extends Peca {
 			buscaY--;
 		}
 		
-		// Leste
+		// Norte
 		int buscaX = this.getPosicao().getX() + 1;
 		while (buscaX <= 7)
 		{
@@ -74,7 +77,7 @@ public class Torre extends Peca {
 			buscaX++;
 		}
 		
-		// Oeste
+		// Sul
 		buscaX = this.getPosicao().getX() - 1;
 		while (buscaX >= 0)
 		{

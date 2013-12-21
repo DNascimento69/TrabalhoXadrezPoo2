@@ -1,13 +1,16 @@
 package modelo.cdp.pecas;
 
 import java.util.ArrayList;
+
 import modelo.cdp.Posicao;
 import modelo.cdp.Tabuleiro;
+import modelo.cdp.Enum.EPeca;
 
 public class Cavalo extends Peca {
 	
 	public Cavalo() {
 		setPontos(3);
+		setTipo(EPeca.CAVALO);
 	}
 	
 	// esta função retorna TODAS as possibilidades de destinos do Cavalo, incluindo as que ele pode comer alguma peça
@@ -20,10 +23,8 @@ public class Cavalo extends Peca {
 		ArrayList<Posicao> posicoes = new ArrayList<Posicao>();
 
 		// caso 1: Norte
-		if (this.getPosicao().getY() + 2 <= 7)
-		{
-			if (this.getPosicao().getX() + 1 <= 7)
-			{
+		if (this.getPosicao().getY() + 2 <= 7) {
+			if (this.getPosicao().getX() + 1 <= 7) {
 				Posicao norteDireita = new Posicao(this.getPosicao().getX() + 1, this.getPosicao().getY() + 2);
 				Peca pecaPos = Tabuleiro.temPeca(tabuleiro, norteDireita);
 				
@@ -36,8 +37,7 @@ public class Cavalo extends Peca {
 				}
 			}
 			
-			if (this.getPosicao().getX() - 1 >= 0)
-			{
+			if (this.getPosicao().getX() - 1 >= 0) {
 				Posicao norteEsquerda = new Posicao(this.getPosicao().getX() - 1, this.getPosicao().getY() + 2);
 				Peca pecaPos = Tabuleiro.temPeca(tabuleiro, norteEsquerda);
 				
@@ -52,18 +52,14 @@ public class Cavalo extends Peca {
 		}
 		
 		// caso 2: Sul
-		if (this.getPosicao().getY() - 2 >= 0)
-		{
-			if (this.getPosicao().getX() + 1 <= 7)
-			{
+		if (this.getPosicao().getY() - 2 >= 0) {
+			if (this.getPosicao().getX() + 1 <= 7) {
 				Posicao sulDireita = new Posicao(this.getPosicao().getX() + 1, this.getPosicao().getY() - 2);
 				Peca pecaPos = Tabuleiro.temPeca(tabuleiro, sulDireita);
 				
-				if(pecaPos != null) // verifica se tem alguma peça na posicao de destino
-				{
+				if(pecaPos != null) { // verifica se tem alguma peça na posicao de destino
 					if(this.getCor() != pecaPos.getCor()) // verifica se a peça da posiçao de destino pode ser comida pela que esta sendo usada
 						posicoes.add(sulDireita);
-						System.out.print("ENTROU");
 				} else {
 					posicoes.add(sulDireita);
 				}
@@ -117,10 +113,8 @@ public class Cavalo extends Peca {
 		}
 
 		// caso 4: Oeste
-		if (this.getPosicao().getX() - 2 >= 0)
-		{
-			if (this.getPosicao().getY() + 1 <= 7)
-			{
+		if (this.getPosicao().getX() - 2 >= 0) {
+			if (this.getPosicao().getY() + 1 <= 7) {
 				Posicao oesteDireita = new Posicao(this.getPosicao().getX() - 2, this.getPosicao().getY() + 1);
 				Peca pecaPos = Tabuleiro.temPeca(tabuleiro, oesteDireita);
 				
@@ -132,8 +126,7 @@ public class Cavalo extends Peca {
 					posicoes.add(oesteDireita);
 				}
 			}
-			if (this.getPosicao().getY() - 1 >= 0)
-			{
+			if (this.getPosicao().getY() - 1 >= 0) {
 				Posicao oesteEsquerda = new Posicao(this.getPosicao().getX() - 2, this.getPosicao().getY() - 1);
 				Peca pecaPos = Tabuleiro.temPeca(tabuleiro, oesteEsquerda);
 				
@@ -150,20 +143,3 @@ public class Cavalo extends Peca {
 		return posicoes;
 	}
 }
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		

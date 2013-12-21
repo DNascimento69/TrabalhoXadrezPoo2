@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package visao.cih;
+package InterfaceGrafica;
 
 import java.awt.Color;
 import java.awt.Component;

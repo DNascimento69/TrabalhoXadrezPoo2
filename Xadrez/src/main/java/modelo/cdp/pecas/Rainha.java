@@ -8,6 +8,8 @@ import modelo.cdp.Enum.EPeca;
 
 public class Rainha extends Peca {
 	
+	private static final long serialVersionUID = 1L;
+
 	public Rainha() {
 		setPontos(9);
 		setTipo(EPeca.RAINHA);

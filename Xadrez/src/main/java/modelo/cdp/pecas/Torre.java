@@ -8,6 +8,8 @@ import modelo.cdp.Enum.EPeca;
 
 public class Torre extends Peca {
 	
+	private static final long serialVersionUID = 1L;
+
 	public Torre() {
 		setPontos(5);
 		setTipo(EPeca.BISPO);

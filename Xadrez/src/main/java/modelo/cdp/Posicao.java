@@ -1,7 +1,10 @@
 package modelo.cdp;
 
-public class Posicao {
+import java.io.Serializable;
+
+public class Posicao implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private int x, y;
 
 	public Posicao(int a, int b) {

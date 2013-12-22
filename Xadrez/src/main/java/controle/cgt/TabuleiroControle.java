@@ -98,8 +98,6 @@ public class TabuleiroControle {
 		this.tabuleiro.setPecas(pecas);
 	}
 	
-	
-	
 	public int encontraPecaParaRetirar(ArrayList<Peca> pecas, Posicao posFutura) {
 		int x = 0;
 		

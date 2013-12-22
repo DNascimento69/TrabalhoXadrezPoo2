@@ -8,6 +8,8 @@ import modelo.cdp.Enum.EPeca;
 
 public class Bispo extends Peca {
 	
+	private static final long serialVersionUID = 1L;
+
 	public Bispo() {
 		setPontos(3);
 		setTipo(EPeca.BISPO);

@@ -1,8 +1,10 @@
 package controle.cgt;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import util.LeitorUtil;
+import modelo.cdp.Jogo;
 import modelo.cdp.Posicao;
 import modelo.cdp.Enum.ECorPeca;
 import modelo.cdp.Enum.EMsg;
@@ -11,12 +13,14 @@ public class JogoControle {
 
 //	private TabuleiroViewControle tabuleiroViewControle = null;
 	
+	private Jogo jogo = null;
 	private TabuleiroControle tabuleiroControle = null;
 	
 	public JogoControle() {	}
 	
-	public void novoJogo() {
+	public void novoJogo(String nomesJogadores) {
 //		this.tabuleiroViewControle = new TabuleiroViewControle();
+		this.jogo = new Jogo(nomesJogadores);
 		this.tabuleiroControle = new TabuleiroControle();
 		this.jogar();
 	}
@@ -26,17 +30,13 @@ public class JogoControle {
 
 		boolean jogadorBranco = true;
 		boolean xequeMate = false;
-
+		
 		while (!xequeMate) {
 			if (jogadorBranco) {
 				while (jogadorBranco) {
-					System.out.println("Jogador Branco: ");
+					System.out.println("Vez de " + jogo.getJogadorBranco().getNome() + ": ");
 
 					ArrayList<Posicao> posicoes = this.novaJogada();
-					
-//					ArrayList<Posicao> posicoes = new ArrayList<Posicao>();
-//					posicoes.add(new Posicao(0, 1));
-//					posicoes.add(new Posicao(0, 3));
 					
 					EMsg msg = this.tabuleiroControle.liberarJogada(ECorPeca.BRANCO, posicoes);
 					
@@ -53,8 +53,8 @@ public class JogoControle {
 				}
 			} else {
 				while (!jogadorBranco) {
-					System.out.println("Jogador Preto: ");
-					
+					System.out.println("Vez de " + jogo.getJogadorPreto().getNome() + ": ");
+
 					ArrayList<Posicao> posicoes = this.novaJogada();
 					
 					EMsg msg = this.tabuleiroControle.liberarJogada(ECorPeca.PRETO, posicoes);
@@ -71,12 +71,17 @@ public class JogoControle {
 					}
 				}
 			}
+			xequeMate = true;
 		}
+		
+		this.jogo.setTabuleiro(this.tabuleiroControle.getTabuleiro());
+		this.jogo.calcularPontuacao();
+		this.salvarJogo();
 	}
 	
 	public ArrayList<Posicao> novaJogada() {
 		ArrayList<Posicao> posicoes = this.novaCoordenada();
-
+		
 		while ((posicoes == null) || (!this.verificaPosicoes(posicoes))) {
 			posicoes = this.novaCoordenada();
 		}
@@ -95,9 +100,9 @@ public class JogoControle {
 
 		return true;
 	}
-	
+
+//	public ArrayList<Posicao> novaCoordenada(ECorPeca corPeca) {
 	public ArrayList<Posicao> novaCoordenada() {
-		
 		String coordenadas = LeitorUtil.lervalorInteiro().toString();
 		
 		if (!(coordenadas.length() == 4)) return null;
@@ -112,5 +117,54 @@ public class JogoControle {
 		posicoes.add(new Posicao(xChegada, yChegada));
 		
 		return posicoes;
+	}
+	
+//	public ArrayList<Posicao> posicoesEspeciais(String coordenadas, ECorPeca corPeca) {
+//		int xPartida = 0;
+//		int yPartida = 0;
+//		int xChegada = 0;
+//		int yChegada = 0;
+//		
+//		if (coordenadas.equalsIgnoreCase("o-o-o")) {
+//			if (corPeca == ECorPeca.BRANCO) {
+//				xPartida = new Integer(1) - 1;
+//				yPartida = new Integer(5) - 1;
+//				xChegada = new Integer(1) - 1;
+//				yChegada = new Integer(7) - 1;
+//			} else {
+//				xPartida = new Integer(8) - 1;
+//				yPartida = new Integer(5) - 1;
+//				xChegada = new Integer(8) - 1;
+//				yChegada = new Integer(7) - 1;
+//			}
+//		} else {
+//			if (coordenadas.equalsIgnoreCase("o-o")) {
+//				if (corPeca == ECorPeca.BRANCO) {
+//					xPartida = new Integer(1) - 1;
+//					yPartida = new Integer(5) - 1;
+//					xChegada = new Integer(1) - 1;
+//					yChegada = new Integer(3) - 1;
+//				} else {
+//					xPartida = new Integer(8) - 1;
+//					yPartida = new Integer(5) - 1;
+//					xChegada = new Integer(8) - 1;
+//					yChegada = new Integer(3) - 1;
+//				}
+//			}
+//		}
+//
+//		ArrayList<Posicao> posicoes = new ArrayList<Posicao>();
+//		posicoes.add(new Posicao(xPartida, yPartida));
+//		posicoes.add(new Posicao(xChegada, yChegada));
+//		
+//		return posicoes;
+//	}
+	
+	public void salvarJogo() {
+		SerializeJogo.incluirJogo(this.jogo);
+	}
+	
+	public LinkedList<Jogo> recuperarJogos() {
+		return SerializeJogo.getJogos();
 	}
 }

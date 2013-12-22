@@ -8,6 +8,8 @@ import modelo.cdp.Enum.ECorPeca;
 import modelo.cdp.Enum.EPeca;
 
 public class Rei extends Peca {
+	
+	private static final long serialVersionUID = 1L;
 	boolean emXeque;
 	
 	public Rei() {

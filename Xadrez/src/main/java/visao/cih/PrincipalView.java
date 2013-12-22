@@ -1,5 +1,9 @@
 package visao.cih;
 
+import java.util.LinkedList;
+
+import modelo.cdp.Jogo;
+
 public class PrincipalView {
 
 	public void menu() {
@@ -15,5 +19,15 @@ public class PrincipalView {
 	
 	public void mensagemFim (){
 		System.out.println("Fim do programa!");
+	}
+	
+	public void mostrarDadosPartidas(LinkedList<Jogo> jogos) {
+		for (int x=0; x<jogos.size(); x++) {
+			System.out.println("Dados da partida " + x);
+
+			System.out.println("Jogador: " + jogos.get(x).getJogadorBranco().getNome() + " / Pontuação: " + jogos.get(x).getJogadorBranco().getPontos());
+
+			System.out.println("Jogador: " + jogos.get(x).getJogadorPreto().getNome() + " / Pontuação: " + jogos.get(x).getJogadorPreto().getPontos());
+		}
 	}
 }

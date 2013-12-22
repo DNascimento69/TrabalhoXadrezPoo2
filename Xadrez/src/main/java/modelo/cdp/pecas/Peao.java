@@ -8,6 +8,8 @@ import modelo.cdp.Enum.ECorPeca;
 import modelo.cdp.Enum.EPeca;
 
 public class Peao extends Peca {
+	
+	private static final long serialVersionUID = 1L;
 	private boolean mexeu;
 	
 	public Peao() {

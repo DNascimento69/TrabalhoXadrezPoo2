@@ -8,6 +8,8 @@ import modelo.cdp.Enum.EPeca;
 
 public class Cavalo extends Peca {
 	
+	private static final long serialVersionUID = 1L;
+
 	public Cavalo() {
 		setPontos(3);
 		setTipo(EPeca.CAVALO);

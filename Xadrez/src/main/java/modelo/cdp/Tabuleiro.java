@@ -1,12 +1,15 @@
 package modelo.cdp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import modelo.cdp.Enum.ECorPeca;
 import modelo.cdp.Enum.EPeca;
 import modelo.cdp.pecas.Peca;
 
-public class Tabuleiro {
+public class Tabuleiro implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Peca> pecas = null;
 	private ArrayList<Peca> pecasAnterior = null;
 	private ArrayList<Posicao> posicoesPossiveisPecasBrancas = new ArrayList<Posicao>();
@@ -87,6 +90,26 @@ public class Tabuleiro {
 			}
 		}
 		return null;
+	}
+	
+	public int calculaTotalPontosBranco() {
+		int total = 0;
+		for (int x = 0; x < pecas.size(); x++) {
+			if (pecas.get(x).getCor() == ECorPeca.PRETO) {
+				total += pecas.get(x).getPontos();
+			}
+		}
+		return (39 - total);
+	}
+	
+	public int calculaTotalPontosPreto() {
+		int total = 0;
+		for (int x = 0; x < pecas.size(); x++) {
+			if (pecas.get(x).getCor() == ECorPeca.BRANCO) {
+				total += pecas.get(x).getPontos();
+			}
+		}
+		return (39 - total);
 	}
 
 	public ArrayList<Peca> getPecas() {

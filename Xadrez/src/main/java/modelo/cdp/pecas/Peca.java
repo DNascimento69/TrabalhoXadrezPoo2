@@ -1,5 +1,6 @@
 package modelo.cdp.pecas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import modelo.cdp.Posicao;
@@ -7,7 +8,9 @@ import modelo.cdp.Enum.ECorPeca;
 import modelo.cdp.Enum.EPeca;
 import modelo.cdp.Tabuleiro;
 
-public abstract class Peca implements Cloneable {
+public abstract class Peca implements Cloneable, Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	private Posicao posicao = null;
 	private ECorPeca cor = null;
 	private String nome = null;

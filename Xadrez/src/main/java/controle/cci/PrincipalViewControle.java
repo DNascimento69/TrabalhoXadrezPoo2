@@ -1,6 +1,7 @@
 package controle.cci;
 
 import controle.cgt.JogoControle;
+import util.LeitorUtil;
 import visao.cih.PrincipalView;
 
 public class PrincipalViewControle {
@@ -15,16 +16,20 @@ public class PrincipalViewControle {
 	public void inicio() {
 		principalView.menu();
 		int opcao = 1;
-//		opcao = LeitorUtil.lervalorInteiro();
+		opcao = LeitorUtil.lervalorInteiro();
 
 		switch (opcao) {
 			case 1: {
+				JogadorViewControle jogadorViewControle = new JogadorViewControle();
+				String jogadores = jogadorViewControle.solicitarNomes();
+				
 				jogoControle = new JogoControle();
-				jogoControle.novoJogo();
+				jogoControle.novoJogo(jogadores);
 				break;
 			}
 			case 2: {
-				
+				jogoControle = new JogoControle();
+				principalView.mostrarDadosPartidas(jogoControle.recuperarJogos());
 				break;
 			}
 			case 3: {

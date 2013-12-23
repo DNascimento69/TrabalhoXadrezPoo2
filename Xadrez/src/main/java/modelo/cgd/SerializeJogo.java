@@ -1,4 +1,4 @@
-package controle.cgt;
+package modelo.cgd;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

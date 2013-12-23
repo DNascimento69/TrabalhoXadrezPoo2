@@ -8,6 +8,7 @@ import modelo.cdp.Jogo;
 import modelo.cdp.Posicao;
 import modelo.cdp.Enum.ECorPeca;
 import modelo.cdp.Enum.EMsg;
+import modelo.cgd.SerializeJogo;
 
 public class JogoControle {
 

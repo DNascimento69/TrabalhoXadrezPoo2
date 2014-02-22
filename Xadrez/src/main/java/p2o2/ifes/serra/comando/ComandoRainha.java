@@ -18,7 +18,7 @@ public class ComandoRainha implements ComandoMovimento {
 	
 	private LinkedList<StrategyMoveInterface> movimentos = new LinkedList<StrategyMoveInterface>();
 	
-	ComandoRainha() {
+	public ComandoRainha() {
 		this.movimentos.add(new StrategyMoveDiagonalCima());
 		this.movimentos.add(new StrategyMoveDiagonalBaixo());
 		this.movimentos.add(new StrategyMoveVerticalCima());

@@ -2,7 +2,7 @@ package p2o2.ifes.serra.model.cdp;
 
 public class Jogador {
 
-	
+	private int jogadorId;
 	private String nome;
 	private int pontos;
 	
@@ -24,6 +24,15 @@ public class Jogador {
 
 	public void setPontos(int pontos) {
 		this.pontos = pontos;
+	}
+        
+        public int getID() {
+		return this.jogadorId;
+	}
+
+
+	public void setID(int ID) {
+		this.jogadorId = ID;
 	}
 
 	

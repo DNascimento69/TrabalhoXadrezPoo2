@@ -16,7 +16,7 @@ public class ComandoTorre implements ComandoMovimento {
 	
 	private LinkedList<StrategyMoveInterface> movimentos = new LinkedList<StrategyMoveInterface>();
 	
-	ComandoTorre() {
+	public ComandoTorre() {
 		this.movimentos.add(new StrategyMoveVerticalCima());
 		this.movimentos.add(new StrategyMoveVerticalBaixo());
 		this.movimentos.add(new StrategyMoveHorizontalDireita());

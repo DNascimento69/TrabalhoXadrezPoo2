@@ -48,13 +48,11 @@ public class OperationController {
 			xadrezController.setOpcaoModoDeJogo(opcaoModoDeJogo);
 			
 			if(opcaoModoDeJogo.equals(EGameModeMenu.OnePlayerGame)){
-				xadrezController.start();
+				//xadrezController.start();
 			}
 			else{
 				xadrezController.start(getNomeJogadores());
 			}
-			
-			xadrezController.imprimeTabuleiro();
 		}
 	}
 	
@@ -66,12 +64,15 @@ public class OperationController {
 	
 	public List<String> getNomeJogadores(){
 		List<String> nomeDosJogadoresList = new ArrayList<String>();
-		
+		String nome1;
+		String nome2;
 		System.out.println("Insira o Nome do 1° jogador");
-		nomeDosJogadoresList.add(LeitorUtil.lervalorString());
+		nome1 = LeitorUtil.lervalorString();
+		nomeDosJogadoresList.add(nome1);
 		
 		System.out.println("Insira o Nome do 2° jogador");
-		nomeDosJogadoresList.add(LeitorUtil.lervalorString());
+		nome2 = LeitorUtil.lervalorString();
+		nomeDosJogadoresList.add(nome2);
 		
 		return nomeDosJogadoresList;
 	}

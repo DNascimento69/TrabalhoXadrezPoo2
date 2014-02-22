@@ -2,18 +2,55 @@ package p2o2.ifes.serra.model.cdp;
 
 import p2o2.ifes.serra.model.Enum.EGameStatus;
 import p2o2.ifes.serra.model.Enum.EPlayerColor;
+import p2o2.ifes.serra.state.StateInterface;
 
 public class Game {
 	
+        private int gameId;
 	private Jogador jogador1;
 	private Jogador jogador2;
 	private Tabuleiro tabuleiro;
-	public EPlayerColor jogadorDaVez;
-	public EGameStatus statusJogo;
+        private EGameStatus statusGame;
+        private int jogadorVencendorId = 0;
+        private EPlayerColor jogadorDaVez;
+        private StateInterface myState;
+        
+        
+        public int getID() {
+		return this.gameId;
+	}
+
+
+	public void setID(int ID) {
+		this.gameId = ID;
+	}
 	
-	public Game(){
-		this.jogadorDaVez = EPlayerColor.white;
-		 this.statusJogo = EGameStatus.EmAndamento;
+        public void setState(StateInterface newState) {
+            myState = newState;
+        }
+        
+        public int getJogadorDaVez() {
+		return jogadorDaVez.getValue();
+	}
+
+	public void setJogadorDaVez(EPlayerColor jogadorCor) {
+		this.jogadorDaVez = jogadorCor;
+	}
+        
+        public int getGameStatus() {
+		return statusGame.getValue();
+	}
+
+	public void setGameStatus(EGameStatus gameStatus) {
+		this.statusGame = gameStatus;
+	}
+        
+        public int getJogadorVencendorId() {
+		return jogadorVencendorId;
+	}
+
+	public void setJogadorVencendorId(int idVencendor) {
+		this.jogadorVencendorId = idVencendor;
 	}
 		
 	public Jogador getJogador1() {
@@ -44,31 +81,11 @@ public class Game {
 		this.tabuleiro = tabuleiro;
 	}
 
-
-	public EPlayerColor getJogadorDaVez() {
-		return jogadorDaVez;
-	}
-
-
-	public void setJogadorDaVez(EPlayerColor jogadorDaVez) {
-		this.jogadorDaVez = jogadorDaVez;
-	}
-
-
-	public EGameStatus getStatusJogo() {
-		return statusJogo;
-	}
-
-
-	public void setStatusJogo(EGameStatus statusJogo) {
-		this.statusJogo = statusJogo;
-	}
-	
 	
 	@Override
 	public String toString() {
 		return "Game [jogador1=" + jogador1 + ", jogador2=" + jogador2
-				+ ", tabuleiro=" + tabuleiro + ", jogadorDaVez=" + jogadorDaVez
+				+ ", tabuleiro=" + tabuleiro 
 				+ "]";
 	}
 

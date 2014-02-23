@@ -51,7 +51,11 @@ public class OperationController {
 			xadrezController.setOpcaoModoDeJogo(opcaoModoDeJogo);
 			
 			if(opcaoModoDeJogo.equals(EGameModeMenu.OnePlayerGame)){
+<<<<<<< HEAD
 				xadrezController.start(getNomeJogadores(1));
+=======
+				//xadrezController.start();
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 			}
 			else{
 				xadrezController.start(getNomeJogadores(2));
@@ -66,6 +70,7 @@ public class OperationController {
 	}
 	
 	
+<<<<<<< HEAD
 	public void jogosSalvosMenu(List<Game> listGamesSalvos) throws SQLException, ClassNotFoundException{
 		List<String> listJogosIdSalvos = new ArrayList<String>();
 		LoadView loadView = new LoadView();
@@ -81,6 +86,20 @@ public class OperationController {
 			loadView.mensagemOpcaoInvalida();
 			loadView.mensagemFim();
 		}
+=======
+	
+	public List<String> getNomeJogadores(){
+		List<String> nomeDosJogadoresList = new ArrayList<String>();
+		String nome1;
+		String nome2;
+		System.out.println("Insira o Nome do 1° jogador");
+		nome1 = LeitorUtil.lervalorString();
+		nomeDosJogadoresList.add(nome1);
+		
+		System.out.println("Insira o Nome do 2° jogador");
+		nome2 = LeitorUtil.lervalorString();
+		nomeDosJogadoresList.add(nome2);
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 		
 		xadrezController.load(listJogosIdSalvos.get(opcaoMenuModoDeJogo-1));
 	}

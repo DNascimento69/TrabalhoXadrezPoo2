@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import p2o2.ifes.serra.builder.GameMaker;
+<<<<<<< HEAD
 import p2o2.ifes.serra.dao.DAOGame;
 import p2o2.ifes.serra.dao.DAOPeca;
 import p2o2.ifes.serra.model.Enum.EGameModeMenu;
@@ -13,6 +14,11 @@ import p2o2.ifes.serra.model.cdp.Peca;
 import p2o2.ifes.serra.state.JogadorBrancoState;
 import p2o2.ifes.serra.state.JogadorPretoState;
 import p2o2.ifes.serra.state.JogadorZeusState;
+=======
+import p2o2.ifes.serra.model.Enum.EGameModeMenu;
+import p2o2.ifes.serra.model.cdp.Peca;
+import p2o2.ifes.serra.state.JogadorBrancoState;
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 
 public class XadrezController extends AbstractXadrezController{
 	
@@ -21,6 +27,7 @@ public class XadrezController extends AbstractXadrezController{
 	public void setOpcaoModoDeJogo(EGameModeMenu opcaoModoDeJogo) {
 		this.opcaoModoDeJogo = opcaoModoDeJogo;
 	}
+<<<<<<< HEAD
 	
 	public void start(List<String> jogadoreLst){
 		GameMaker gameMaker = new GameMaker(opcaoModoDeJogo ,jogadoreLst);
@@ -69,6 +76,15 @@ public class XadrezController extends AbstractXadrezController{
 		DAOPeca daoPeca = new DAOPeca();
 		List<Peca> listPecaSalvos = daoPeca.findAll();
 		List<Peca> listPecasDoJogo = new ArrayList<Peca>();
+=======
+	
+	public void start(List<String> jogadoreLst){
+		GameMaker gameMaker = new GameMaker(jogadoreLst.get(0),jogadoreLst.get(1));
+		gameMaker.constructGame();
+		this.gameDaVez = gameMaker.getGame();
+                this.imprimeTabuleiro();
+                this.gameDaVez.setState(new JogadorBrancoState(gameDaVez));
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 		
 		for(Peca peca: listPecaSalvos){
 			if(peca.getIdGame() == jogoId)
@@ -79,6 +95,7 @@ public class XadrezController extends AbstractXadrezController{
 		return listPecasDoJogo;
 	}
 	
+<<<<<<< HEAD
 	
 	public Game getJogoById(int Id) throws SQLException, ClassNotFoundException{
 		DAOGame daoGame = new DAOGame();
@@ -95,6 +112,29 @@ public class XadrezController extends AbstractXadrezController{
 		}
 		
 		return game;
+=======
+	public void imprimeTabuleiro()
+	{
+		 Peca[][] matriz = gameDaVez.getTabuleiro().getMatrixTabuleiro();
+                 Peca peca;
+                  System.out.println("Legenda:");
+                  System.out.println("E - Pião, K - Rei, Q - Rainha, C - Cavalo, I - Bispo, T - Torre");
+                  System.out.println("P - Preto, B - Branco");
+                  System.out.println(" ");
+		 
+		for (int row = 0; row < matriz.length; row++) {
+		        for (int column = 0; column < matriz.length; column++) {
+		        	if(matriz[row][column] != null){
+                                    peca = matriz[row][column];
+                                    System.out.print(peca.toString() + " ");
+                                }
+                                else{
+                                    System.out.print(" - ");
+                                }                              
+		    }
+		    System.out.println();
+		}
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 	}
 	
 }

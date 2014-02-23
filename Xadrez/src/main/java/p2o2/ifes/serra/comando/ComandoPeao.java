@@ -17,6 +17,7 @@ public abstract class ComandoPeao implements ComandoMovimento {
 			//this.estrategiaMovimento.setLimitacao(ELimiteCasas.DOIS);
 		}
 	
+<<<<<<< HEAD
 		public List<String> listaMovimentosPossiveis(Tabuleiro t, Peca p){
 			List<String> movimentosPossiveis = new LinkedList<String>();
 		
@@ -40,6 +41,27 @@ public abstract class ComandoPeao implements ComandoMovimento {
         
         public void setLimitacao(ELimiteCasas limite,int index){
             this.movimentos.get(index).setLimitacao(limite);
+=======
+        
+	public ComandoPeao() {
+		//this.estrategiaMovimento.setLimitacao(ELimiteCasas.DOIS);
+	}
+	
+	public List<String> listaMovimentosPossiveis(Tabuleiro t, Peca p) {
+		return this.estrategiaMovimento.movePool(t, p);
+	}
+	
+	public void modificaLimitaçãoEstrategia(ELimiteCasas l) {
+		this.estrategiaMovimento.setLimitacao(l);
+	}
+        
+        public void setStrategyMoveInterface(StrategyMoveInterface strategy){
+            this.estrategiaMovimento = strategy;
+        }
+        
+        public void seLimitacao(ELimiteCasas limite){
+            this.estrategiaMovimento.setLimitacao(limite);
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
         }
 }
 

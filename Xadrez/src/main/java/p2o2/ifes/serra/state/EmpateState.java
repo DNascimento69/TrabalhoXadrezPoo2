@@ -21,6 +21,7 @@ import p2o2.ifes.serra.view.cih.JogadaView;
 public class EmpateState implements StateInterface{
      private JogadaView jogadaView = new JogadaView();
      EJogadaMenu jogadaMenu;
+<<<<<<< HEAD
 	 private Game jogo;
     
      public EmpateState(Game game){
@@ -32,6 +33,17 @@ public class EmpateState implements StateInterface{
           String cor;
 
          if(this.jogo.getJogadorDaVez() == 1){
+=======
+    
+     public EmpateState(Game game){
+         jogadaDaVez(game);
+     }
+    
+     public void jogadaDaVez(Game game){
+          String cor;
+
+         if(game.getJogadorDaVez() == 1){
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
              cor = "branco";
          }
           else{
@@ -48,6 +60,7 @@ public class EmpateState implements StateInterface{
          
          if (jogadaMenu.equals(EJogadaMenu.Jogar)) {
               this.jogar();
+<<<<<<< HEAD
               if(this.jogo.getJogadorDaVez() == 1){
                    this.jogo.setJogadorDaVez(EPlayerColor.black);
                     this.jogo.setState(new JogadorPretoState(this.jogo));
@@ -63,6 +76,23 @@ public class EmpateState implements StateInterface{
          }
          if(jogadaMenu.equals(EJogadaMenu.Desistir)){
               this.jogo.setState(new DesistirState(this.jogo));
+=======
+              if(game.getJogadorDaVez() == 1){
+                   game.setJogadorDaVez(EPlayerColor.black);
+                    game.setState(new JogadorPretoState(game));
+               }
+                else{
+                   game.setJogadorDaVez(EPlayerColor.white);
+                    game.setState(new JogadorBrancoState(game));
+               }             
+         }
+         if (jogadaMenu.equals(EJogadaMenu.Empate)){
+                this.empatar(game);
+                 
+         }
+         if(jogadaMenu.equals(EJogadaMenu.Desistir)){
+              game.setState(new DesistirState(game));
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
          }
          if(jogadaMenu.equals(EJogadaMenu.Salvar)){
              

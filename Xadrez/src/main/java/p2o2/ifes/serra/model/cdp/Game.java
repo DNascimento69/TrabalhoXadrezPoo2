@@ -3,11 +3,15 @@ package p2o2.ifes.serra.model.cdp;
 import p2o2.ifes.serra.model.Enum.EGameModeMenu;
 import p2o2.ifes.serra.model.Enum.EGameStatus;
 import p2o2.ifes.serra.model.Enum.EPlayerColor;
+<<<<<<< HEAD
 import p2o2.ifes.serra.model.cdp.reuse.Model;
+=======
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 import p2o2.ifes.serra.state.StateInterface;
 
 public class Game extends Model{
 	
+<<<<<<< HEAD
 	// <editor-fold defaultstate="collapsed" desc="Atributos">
     private int gameId;
 	private Jogador jogador1;
@@ -25,15 +29,40 @@ public class Game extends Model{
 		return this.gameId;
 	}
 
+=======
+        private int gameId;
+	private Jogador jogador1;
+	private Jogador jogador2;
+	private Tabuleiro tabuleiro;
+        private EGameStatus statusGame;
+        private int jogadorVencendorId = 0;
+        private EPlayerColor jogadorDaVez;
+        private StateInterface myState;
+        
+        
+        public int getID() {
+		return this.gameId;
+	}
+
+
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 	public void setID(int ID) {
 		this.gameId = ID;
 	}
 	
+<<<<<<< HEAD
     public void setState(StateInterface newState) {
             myState = newState;
         }
         
     public int getJogadorDaVez() {
+=======
+        public void setState(StateInterface newState) {
+            myState = newState;
+        }
+        
+        public int getJogadorDaVez() {
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 		return jogadorDaVez.getValue();
 	}
 
@@ -41,7 +70,11 @@ public class Game extends Model{
 		this.jogadorDaVez = jogadorCor;
 	}
         
+<<<<<<< HEAD
     public int getGameStatus() {
+=======
+        public int getGameStatus() {
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 		return statusGame.getValue();
 	}
 
@@ -49,7 +82,11 @@ public class Game extends Model{
 		this.statusGame = gameStatus;
 	}
         
+<<<<<<< HEAD
     public int getJogadorVencendorId() {
+=======
+        public int getJogadorVencendorId() {
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 		return jogadorVencendorId;
 	}
 
@@ -80,6 +117,7 @@ public class Game extends Model{
 	public void setTabuleiro(Tabuleiro tabuleiro) {
 		this.tabuleiro = tabuleiro;
 	}
+<<<<<<< HEAD
 	
 		public EGameStatus getStatusGame() {
 		return statusGame;
@@ -96,6 +134,9 @@ public class Game extends Model{
 	public void setGameMode(EGameModeMenu gameMode) {
 		this.gameMode = gameMode;
 	}
+=======
+
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 	
 	@Override
 	public String toString() {

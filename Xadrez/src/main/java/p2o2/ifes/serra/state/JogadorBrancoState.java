@@ -6,6 +6,7 @@
 
 package p2o2.ifes.serra.state;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import p2o2.ifes.serra.dao.DAOGame;
@@ -16,6 +17,11 @@ import p2o2.ifes.serra.model.Enum.EJogadaMenu;
 import p2o2.ifes.serra.model.Enum.EPlayerColor;
 import p2o2.ifes.serra.model.cdp.Game;
 import p2o2.ifes.serra.model.cdp.Peca;
+=======
+import p2o2.ifes.serra.model.Enum.EJogadaMenu;
+import p2o2.ifes.serra.model.Enum.EPlayerColor;
+import p2o2.ifes.serra.model.cdp.Game;
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 import p2o2.ifes.serra.util.LeitorUtil;
 import p2o2.ifes.serra.view.cih.JogadaView;
 
@@ -25,12 +31,16 @@ import p2o2.ifes.serra.view.cih.JogadaView;
  */
 public class JogadorBrancoState implements StateInterface {
      private JogadaView jogadaView = new JogadaView();
+<<<<<<< HEAD
 	 private Game jogo;
 	 
+=======
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
      EJogadaMenu jogadaMenu;
      
      
      public JogadorBrancoState(Game game){
+<<<<<<< HEAD
 		 this.jogo = game;
          jogadaDaVez();
      }
@@ -106,6 +116,43 @@ public class JogadorBrancoState implements StateInterface {
 			System.out.println("Sua jogada foi: "+ jogada);
 			jogadaValida = game.jogada(jogada, EPlayerColor.white);
 		 }
+=======
+         jogadaDaVez(game);
+     }
+    
+     public void jogadaDaVez(Game game){
+         System.out.println(" ");
+         System.out.println("Jogador branco é o seu turno!");
+         
+         jogadaView.show();	
+         int opcaoMenu = LeitorUtil.lervalorInteiro();
+	 verificaOpcaoJogada(opcaoMenu);
+         
+         
+         if (jogadaMenu.equals(EJogadaMenu.Jogar)) {
+             this.jogar();
+             game.setJogadorDaVez(EPlayerColor.black);
+             game.setState(new JogadorPretoState(game));
+             
+         }
+         if (jogadaMenu.equals(EJogadaMenu.Empate)){
+              game.setJogadorDaVez(EPlayerColor.black);
+              game.setState(new EmpateState(game));
+         }
+         if(jogadaMenu.equals(EJogadaMenu.Desistir)){
+              game.setState(new DesistirState(game));
+         }
+         if(jogadaMenu.equals(EJogadaMenu.Salvar)){
+             
+         }
+     }
+     protected void jogar(){
+         String jogada;
+         
+         System.out.println("Jogador branco, faça sua jogada!");
+         jogada = LeitorUtil.lervalorString();
+         System.out.println("Sua Jogada FOi: "+ jogada);
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
      }
      
      protected void verificaOpcaoJogada(int opcaoMainMenu){

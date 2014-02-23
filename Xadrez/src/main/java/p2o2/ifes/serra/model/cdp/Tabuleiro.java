@@ -13,7 +13,65 @@ public class Tabuleiro {
 	// <editor-fold defaultstate="collapsed" desc="Atributos">
 	private Peca[][] matrizTabuleiro = new Peca[8][8];
 	private List<Peca> listPecasComidas = new ArrayList<Peca>();
+<<<<<<< HEAD
 	// </editor-fold>
+=======
+	
+	public String verificaXeque(EPlayerColor eCor) { // pega todas as jogadas possiveis para o exercito inimigo e verifica se o rei esta em uma delas
+		List<Peca> pecasInimigas = null;
+		
+		String posRei;
+		if(eCor.equals(EPlayerColor.white)) {
+			posRei = achaRei("KB");
+			pecasInimigas = getPecasPretas();
+		} else {
+			posRei = achaRei("KP");
+			pecasInimigas = getPecasBrancas();
+		}
+		int posReiX = Integer.getInteger(posRei.substring(0, 1));
+		int posReiY = Integer.getInteger(posRei.substring(1));
+		Peca rei = matrizTabuleiro[posReiX][posReiY];
+		
+		List<String> todasPossibilidadesInimigo = null;
+		
+		for(int x = 0; x < pecasInimigas.size(); x++)
+			todasPossibilidadesInimigo.addAll(pecasInimigas.get(x).listaMovimentosPossiveisPeca(this));
+		
+		int x = 0;
+		boolean xeque = false;
+		if (todasPossibilidadesInimigo != null) {
+			while ((x < todasPossibilidadesInimigo.size()) && (!xeque)) {
+				if(todasPossibilidadesInimigo.get(x).equalsIgnoreCase(posRei)) {
+					xeque = true;
+				}
+				x++;
+			}
+		}
+		
+		if (xeque == true) { // se o rei estiver em xegue, esta parte vai testar se ele esta em xeque mate
+			List<String> todasPossibilidadesRei = rei.listaMovimentosPossiveisPeca(this);
+			
+			if ((todasPossibilidadesRei != null) && (todasPossibilidadesRei.size() > 0)) {
+				return ("Xeque");
+			} else {
+				return ("Xeque Mate");
+			}
+		}
+		return "";
+	}
+	
+	private String achaRei(String idRei) {
+		boolean achou = false;
+		for(int x = 0; x < 8; x++) {
+			for(int y = 0; y < 8; y++) {
+				if(this.matrizTabuleiro[x][y].getPecaId().equalsIgnoreCase(idRei)) {
+					return Integer.toString(x) + Integer.toString(y);
+				}
+			}
+		}
+		return null;
+	}
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 
 	// <editor-fold defaultstate="collapsed" desc="GetSeters">
 	public void setPecaPosicao(Peca peca,int linha, int coluna) {
@@ -94,6 +152,51 @@ public class Tabuleiro {
 				}
 			}
 	
+<<<<<<< HEAD
+=======
+	public LinkedList<Peca> getPecasBrancas() {
+		LinkedList<Peca> listaPecas = new LinkedList<Peca>();
+		for (int x = 0; x < 8; x++) {
+			for (int y = 0; y < 8; y++) {
+				if (((matrizTabuleiro[x][y]).getCor()).equals(EPlayerColor.white)) {
+					listaPecas.add(matrizTabuleiro[x][y]);
+				}
+			}
+		}
+		return listaPecas;
+	}
+	
+	public LinkedList<Peca> getPecasPretas() {
+		LinkedList<Peca> listaPecas = new LinkedList<Peca>();
+		for (int x = 0; x < 8; x++) {
+			for (int y = 0; y < 8; y++) {
+				if (((matrizTabuleiro[x][y]).getCor()).equals(EPlayerColor.black)) {
+					listaPecas.add(matrizTabuleiro[x][y]);
+				}
+			}
+		}
+		return listaPecas;
+	}
+	
+	public LinkedList<String> listaPosicoesPossiveis(LinkedList<Peca> listaPecas) {
+		LinkedList<String> listaPosicoes = new LinkedList<String>();
+		for(Peca l: listaPecas) {
+				listaPosicoes.addAll(l.listaMovimentosPossiveisPeca(this)) ;
+		}
+		return listaPosicoes;
+	}
+	
+	public void setPecaPosicao(Peca peca,int linha, int coluna) {
+		matrizTabuleiro[linha][coluna] = peca;
+	}
+	
+	public Peca getPecaPosicao(int linha, int coluna) {
+		return this.matrizTabuleiro[linha][coluna];
+	}
+
+	public Peca[][] getMatrixTabuleiro() {
+		return matrizTabuleiro;
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 	}
 		
 	public void movePeca(Peca peca,String posicaoDestino){

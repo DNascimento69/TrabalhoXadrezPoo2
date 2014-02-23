@@ -6,7 +6,10 @@
 
 package p2o2.ifes.serra.state;
 
+<<<<<<< HEAD
 import p2o2.ifes.serra.model.Enum.EGameModeMenu;
+=======
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
 import p2o2.ifes.serra.model.Enum.EGameStatus;
 import p2o2.ifes.serra.model.cdp.Game;
 import p2o2.ifes.serra.model.cdp.Jogador;
@@ -17,6 +20,7 @@ import p2o2.ifes.serra.model.cdp.Jogador;
  * @author Vic
  */
 public class DesistirState implements StateInterface{
+<<<<<<< HEAD
 	 private Game jogo;
     
      public DesistirState(Game game){
@@ -65,6 +69,34 @@ public class DesistirState implements StateInterface{
 					System.out.println("Jogo Finalizado!");
 				}
 		  }
+=======
+    
+     public DesistirState(Game game){
+         jogadaDaVez(game);
+     }
+    
+     public void jogadaDaVez(Game game){
+          Jogador jogadorDesistente;
+          Jogador ganhador;
+         if(game.getJogadorDaVez() == 1){
+             jogadorDesistente = game.getJogador1();
+             ganhador = game.getJogador2();
+         }
+         else{
+             jogadorDesistente = game.getJogador2();
+             ganhador = game.getJogador1();
+         }
+         
+         
+         game.setGameStatus(EGameStatus.Terminado);
+         game.setJogadorVencendorId(ganhador.getID());
+         //SALVAR GAME
+         System.out.println(" ");
+         System.out.println("O Jogador: " + jogadorDesistente.toString()+ " Desistiu, logo, o Jogador : " + ganhador.toString() + " é o vencedor!");
+         System.out.println("Parabéns!");
+         System.out.println("Jogo Finalizado!");
+         
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
      }
     
 }

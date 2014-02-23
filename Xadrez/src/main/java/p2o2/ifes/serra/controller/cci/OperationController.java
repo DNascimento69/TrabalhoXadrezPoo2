@@ -1,13 +1,16 @@
 package p2o2.ifes.serra.controller.cci;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import p2o2.ifes.serra.controller.cgt.XadrezController;
 import p2o2.ifes.serra.model.Enum.EGameModeMenu;
 import p2o2.ifes.serra.model.Enum.EMainMenu;
+import p2o2.ifes.serra.model.cdp.Game;
 import p2o2.ifes.serra.util.LeitorUtil;
 import p2o2.ifes.serra.view.cih.GameView;
+import p2o2.ifes.serra.view.cih.LoadView;
 
 public class OperationController {
 	
@@ -22,7 +25,7 @@ public class OperationController {
 	}
 	
 	
-	public void start(){
+	public void start() throws SQLException, ClassNotFoundException{
 		if(opcaoMenuInicial.equals(EMainMenu.NovoJogo))
 		{
 			iniciarNovoJogo();
@@ -48,32 +51,50 @@ public class OperationController {
 			xadrezController.setOpcaoModoDeJogo(opcaoModoDeJogo);
 			
 			if(opcaoModoDeJogo.equals(EGameModeMenu.OnePlayerGame)){
-				//xadrezController.start();
+				xadrezController.start(getNomeJogadores(1));
 			}
 			else{
-				xadrezController.start(getNomeJogadores());
+				xadrezController.start(getNomeJogadores(2));
 			}
 		}
 	}
 	
-	public void carregarJogoSalvo(){
+	public void carregarJogoSalvo() throws SQLException, ClassNotFoundException{
+		List<Game> listGamesSalvos = xadrezController.getJogosSalvo();
 		
+		jogosSalvosMenu(listGamesSalvos);
 	}
 	
 	
+	public void jogosSalvosMenu(List<Game> listGamesSalvos) throws SQLException, ClassNotFoundException{
+		List<String> listJogosIdSalvos = new ArrayList<String>();
+		LoadView loadView = new LoadView();
+		
+		for(Game game:listGamesSalvos){
+			listJogosIdSalvos.add(Integer.toString(game.getID()));
+		}
+		loadView.show(listJogosIdSalvos);
+		
+		int opcaoMenuModoDeJogo = LeitorUtil.lervalorInteiro();
+
+		if(opcaoMenuModoDeJogo-1 > listJogosIdSalvos.size()){
+			loadView.mensagemOpcaoInvalida();
+			loadView.mensagemFim();
+		}
+		
+		xadrezController.load(listJogosIdSalvos.get(opcaoMenuModoDeJogo-1));
+	}
 	
-	public List<String> getNomeJogadores(){
+	
+	public List<String> getNomeJogadores(int players){
 		List<String> nomeDosJogadoresList = new ArrayList<String>();
 		String nome1;
-		String nome2;
-		System.out.println("Insira o Nome do 1° jogador");
-		nome1 = LeitorUtil.lervalorString();
-		nomeDosJogadoresList.add(nome1);
-		
-		System.out.println("Insira o Nome do 2° jogador");
-		nome2 = LeitorUtil.lervalorString();
-		nomeDosJogadoresList.add(nome2);
-		
+
+		for(int x=0; x< players; x++){
+			System.out.println("Insira o Nome do "+Integer.toHexString(x+1)+"° jogador");
+			nome1 = LeitorUtil.lervalorString();
+			nomeDosJogadoresList.add(nome1);
+		}
 		return nomeDosJogadoresList;
 	}
 

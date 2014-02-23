@@ -4,14 +4,23 @@
  * and open the template in the editor.
  */
 
-package p2o2.ifes.serra.state;
-
-import p2o2.ifes.serra.model.cdp.Game;
+package p2o2.ifes.serra.model.Enum;
 
 /**
  *
  * @author Vic
  */
-public interface StateInterface {
-    public void jogadaDaVez();
+public enum EPecaMoveu {
+	
+	sim (1),
+	nao (2);
+	
+	private final int value;
+	
+	EPecaMoveu(int valor) {
+	        this.value = valor;
+	}
+
+	 public int getValue() { return value; }
+	
 }

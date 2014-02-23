@@ -21,15 +21,17 @@ import p2o2.ifes.serra.view.cih.JogadaView;
 public class EmpateState implements StateInterface{
      private JogadaView jogadaView = new JogadaView();
      EJogadaMenu jogadaMenu;
+	 private Game jogo;
     
      public EmpateState(Game game){
-         jogadaDaVez(game);
+		 this.jogo = game;
+         jogadaDaVez();
      }
     
-     public void jogadaDaVez(Game game){
+     public void jogadaDaVez(){
           String cor;
 
-         if(game.getJogadorDaVez() == 1){
+         if(this.jogo.getJogadorDaVez() == 1){
              cor = "branco";
          }
           else{
@@ -46,21 +48,21 @@ public class EmpateState implements StateInterface{
          
          if (jogadaMenu.equals(EJogadaMenu.Jogar)) {
               this.jogar();
-              if(game.getJogadorDaVez() == 1){
-                   game.setJogadorDaVez(EPlayerColor.black);
-                    game.setState(new JogadorPretoState(game));
+              if(this.jogo.getJogadorDaVez() == 1){
+                   this.jogo.setJogadorDaVez(EPlayerColor.black);
+                    this.jogo.setState(new JogadorPretoState(this.jogo));
                }
                 else{
-                   game.setJogadorDaVez(EPlayerColor.white);
-                    game.setState(new JogadorBrancoState(game));
+                   this.jogo.setJogadorDaVez(EPlayerColor.white);
+                    this.jogo.setState(new JogadorBrancoState(this.jogo));
                }             
          }
          if (jogadaMenu.equals(EJogadaMenu.Empate)){
-                this.empatar(game);
+                this.empatar(this.jogo);
                  
          }
          if(jogadaMenu.equals(EJogadaMenu.Desistir)){
-              game.setState(new DesistirState(game));
+              this.jogo.setState(new DesistirState(this.jogo));
          }
          if(jogadaMenu.equals(EJogadaMenu.Salvar)){
              

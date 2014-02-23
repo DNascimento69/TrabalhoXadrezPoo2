@@ -26,7 +26,7 @@ public class StrategyMoveDiagonalBaixo implements StrategyMoveInterface {
 			Peca pecaPos = tabuleiro.getPecaPosicao(linhaAuxiliar, colunaAuxiliar);
 			jogadaPossivel = Integer.toString(linhaAuxiliar) + Integer.toString(colunaAuxiliar);
 			if (pecaPos != null) {
-				if (peca.getCor().equals(pecaPos.getCor())) {
+				if (!peca.getCor().equals(pecaPos.getCor())) {
 					jogadasValidasLst.add(jogadaPossivel);
 				}
 				parar = true;
@@ -48,7 +48,7 @@ public class StrategyMoveDiagonalBaixo implements StrategyMoveInterface {
 			Peca pecaPos = tabuleiro.getPecaPosicao(linhaAuxiliar, colunaAuxiliar);
 			jogadaPossivel = Integer.toString(linhaAuxiliar) + Integer.toString(colunaAuxiliar);
 			if (pecaPos != null) {
-				if (peca.getCor().equals(pecaPos.getCor())) {
+				if (!peca.getCor().equals(pecaPos.getCor())) {
 					jogadasValidasLst.add(jogadaPossivel);
 				}
 				parar = true;

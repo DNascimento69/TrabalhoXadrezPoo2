@@ -1,8 +1,10 @@
 package p2o2.ifes.serra.model.cdp;
 
-public class Jogador {
+import p2o2.ifes.serra.model.cdp.reuse.Model;
 
-	private int jogadorId;
+public class Jogador extends Model{
+
+	
 	private String nome;
 	private int pontos;
 	
@@ -26,14 +28,7 @@ public class Jogador {
 		this.pontos = pontos;
 	}
         
-        public int getID() {
-		return this.jogadorId;
-	}
-
-
-	public void setID(int ID) {
-		this.jogadorId = ID;
-	}
+   
 
 	
 	@Override

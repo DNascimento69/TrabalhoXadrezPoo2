@@ -15,14 +15,15 @@ import p2o2.ifes.serra.model.cdp.Jogador;
  * @author Vic
  */
 public class FinalizaState implements StateInterface {
+	  private Game jogo;
     
-      public FinalizaState(){
-          
+      public FinalizaState(Game game){
+          this.jogo = game;
       }
       
-      public void jogadaDaVez(Game game){
+      public void jogadaDaVez(){
          Jogador jogadorGanhador = new Jogador();//Pegar ganhador..
-         game.setGameStatus(EGameStatus.Terminado);
+         this.jogo.setGameStatus(EGameStatus.Terminado);
          //game.setJogadorVencendorId(ganhador.getID());
          //SALVAR GAME
          System.out.println(" ");

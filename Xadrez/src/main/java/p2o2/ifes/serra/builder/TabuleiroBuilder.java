@@ -5,6 +5,7 @@ import java.util.List;
 
 import p2o2.ifes.serra.factory.PecaFactory;
 import p2o2.ifes.serra.model.Enum.EPlayerColor;
+import p2o2.ifes.serra.model.Enum.EStatusPeca;
 import p2o2.ifes.serra.model.Enum.ETipoPeca;
 import p2o2.ifes.serra.model.cdp.Tabuleiro;
 import p2o2.ifes.serra.model.cdp.Peca;
@@ -25,6 +26,23 @@ public class TabuleiroBuilder {
 		listPecas.addAll(criarPecasPretas());
 		
 		inserirPecas(listPecas);
+	}
+	
+	public void RemakePecas(List<Peca> listPeca){
+		List<Peca> lstPecaViva = new ArrayList<Peca>();
+		List<Peca> lstPecaMorta = new ArrayList<Peca>();
+		
+		for(Peca peca:listPeca){
+			if(peca.getStatusPeca().equals(EStatusPeca.vivo)){
+				lstPecaViva.add(peca);
+			}
+			else{
+				lstPecaMorta.add(peca);
+			}
+		}
+		
+		tabuleiro.setListPecasComidas(lstPecaMorta);
+		inserirPecas(lstPecaViva);
 	}
 	
 	private void inserirPecas(List<Peca> pecasAInserir){

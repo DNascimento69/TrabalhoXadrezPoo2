@@ -1,5 +1,7 @@
 package p2o2.ifes.serra.builder;
 
+import java.util.List;
+import p2o2.ifes.serra.model.cdp.Peca;
 import p2o2.ifes.serra.model.cdp.Tabuleiro;
 
 public class TabuleiroMaker {
@@ -16,6 +18,10 @@ public class TabuleiroMaker {
 	 
 	  public void constructTabuleiro() {
 	    this.tabuleiroBuilder.CriarPecas();
+	  }
+	  
+	  public void remakeTabuleiro(List<Peca> listPeca){
+		  this.tabuleiroBuilder.RemakePecas(listPeca);
 	  }
 
 }

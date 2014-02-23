@@ -7,7 +7,8 @@
 package p2o2.ifes.serra.comando;
 
 import p2o2.ifes.serra.model.Enum.ELimiteCasas;
-import p2o2.ifes.serra.strategy.StrategyMoveVerticalCima;
+import p2o2.ifes.serra.strategy.StrategyMoveVerticalBaixo;
+import p2o2.ifes.serra.strategy.StrategyMoveDiagonalBaixo;
 
 /**
  *
@@ -16,7 +17,9 @@ import p2o2.ifes.serra.strategy.StrategyMoveVerticalCima;
 public class ComandoPeaoBranco extends ComandoPeao{
     	
     public ComandoPeaoBranco() {
-                this.setStrategyMoveInterface(new StrategyMoveVerticalCima());
-		this.seLimitacao(ELimiteCasas.DOIS);
+		this.setStrategyMoveInterface(new StrategyMoveVerticalBaixo());
+		this.setStrategyMoveInterface(new StrategyMoveDiagonalBaixo());	
+		this.setLimitacao(ELimiteCasas.DOIS,0);
+		this.setLimitacao(ELimiteCasas.UM,1);
 	}
 }

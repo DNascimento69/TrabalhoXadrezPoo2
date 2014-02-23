@@ -1,6 +1,7 @@
 package p2o2.ifes.serra.factory;
 
 import p2o2.ifes.serra.comando.*;
+import p2o2.ifes.serra.model.Enum.EPecaMoveu;
 import p2o2.ifes.serra.model.Enum.EPlayerColor;
 import p2o2.ifes.serra.model.Enum.ETipoPeca;
 import p2o2.ifes.serra.model.cdp.Peca;
@@ -11,6 +12,7 @@ public class PecaFactory {
 		Peca peca = new Peca();
 		peca.setCor(cor);
 		peca.setIdGame(idGame);
+		peca.setPecaMoveu(EPecaMoveu.nao);
                 
 		switch(tipo){
 			case Torre:

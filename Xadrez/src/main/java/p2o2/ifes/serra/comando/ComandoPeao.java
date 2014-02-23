@@ -17,6 +17,10 @@ public abstract class ComandoPeao implements ComandoMovimento {
 			//this.estrategiaMovimento.setLimitacao(ELimiteCasas.DOIS);
 		}
 	
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b47a549e1b4abe0cdef5726e9654d54b6c3bb35f
 		public List<String> listaMovimentosPossiveis(Tabuleiro t, Peca p){
 			List<String> movimentosPossiveis = new LinkedList<String>();
 		
@@ -29,6 +33,8 @@ public abstract class ComandoPeao implements ComandoMovimento {
 			}
 			return movimentosPossiveis;
 		}
+<<<<<<< HEAD
+=======
 	
 		public void modificaLimitaçãoEstrategia(ELimiteCasas l) {
 			this.movimentos.get(0).setLimitacao(l);
@@ -40,6 +46,33 @@ public abstract class ComandoPeao implements ComandoMovimento {
         
         public void setLimitacao(ELimiteCasas limite,int index){
             this.movimentos.get(index).setLimitacao(limite);
+=======
+        
+	public ComandoPeao() {
+		//this.estrategiaMovimento.setLimitacao(ELimiteCasas.DOIS);
+	}
+	
+	public List<String> listaMovimentosPossiveis(Tabuleiro t, Peca p) {
+		return this.estrategiaMovimento.movePool(t, p);
+	}
+>>>>>>> b47a549e1b4abe0cdef5726e9654d54b6c3bb35f
+	
+		public void modificaLimitaçãoEstrategia(ELimiteCasas l) {
+			this.movimentos.get(0).setLimitacao(l);
+		}
+        
+        public void setStrategyMoveInterface(StrategyMoveInterface strategy){
+            this.movimentos.add(strategy);
+        }
+        
+<<<<<<< HEAD
+        public void setLimitacao(ELimiteCasas limite,int index){
+            this.movimentos.get(index).setLimitacao(limite);
+=======
+        public void seLimitacao(ELimiteCasas limite){
+            this.estrategiaMovimento.setLimitacao(limite);
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
+>>>>>>> b47a549e1b4abe0cdef5726e9654d54b6c3bb35f
         }
 }
 

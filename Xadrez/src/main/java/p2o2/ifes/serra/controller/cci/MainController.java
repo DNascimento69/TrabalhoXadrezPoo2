@@ -12,7 +12,11 @@ public class MainController {
 	private EMainMenu opcaoMenuInicial;
 	
 
+<<<<<<< HEAD
 	public void start() throws SQLException, ClassNotFoundException {
+=======
+	public void start() throws ClassNotFoundException, SQLException {
+>>>>>>> b47a549e1b4abe0cdef5726e9654d54b6c3bb35f
 		
 		mainView.show();
 		

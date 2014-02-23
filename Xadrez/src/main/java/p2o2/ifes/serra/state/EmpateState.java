@@ -21,6 +21,10 @@ import p2o2.ifes.serra.view.cih.JogadaView;
 public class EmpateState implements StateInterface{
      private JogadaView jogadaView = new JogadaView();
      EJogadaMenu jogadaMenu;
+<<<<<<< HEAD
+	 private Game jogo;
+=======
+<<<<<<< HEAD
 	 private Game jogo;
     
      public EmpateState(Game game){
@@ -32,6 +36,23 @@ public class EmpateState implements StateInterface{
           String cor;
 
          if(this.jogo.getJogadorDaVez() == 1){
+=======
+>>>>>>> b47a549e1b4abe0cdef5726e9654d54b6c3bb35f
+    
+     public EmpateState(Game game){
+		 this.jogo = game;
+         jogadaDaVez();
+     }
+    
+     public void jogadaDaVez(){
+          String cor;
+
+<<<<<<< HEAD
+         if(this.jogo.getJogadorDaVez() == 1){
+=======
+         if(game.getJogadorDaVez() == 1){
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
+>>>>>>> b47a549e1b4abe0cdef5726e9654d54b6c3bb35f
              cor = "branco";
          }
           else{
@@ -48,6 +69,12 @@ public class EmpateState implements StateInterface{
          
          if (jogadaMenu.equals(EJogadaMenu.Jogar)) {
               this.jogar();
+<<<<<<< HEAD
+              if(this.jogo.getJogadorDaVez() == 1){
+                   this.jogo.setJogadorDaVez(EPlayerColor.black);
+                    this.jogo.setState(new JogadorPretoState(this.jogo));
+=======
+<<<<<<< HEAD
               if(this.jogo.getJogadorDaVez() == 1){
                    this.jogo.setJogadorDaVez(EPlayerColor.black);
                     this.jogo.setState(new JogadorPretoState(this.jogo));
@@ -63,6 +90,28 @@ public class EmpateState implements StateInterface{
          }
          if(jogadaMenu.equals(EJogadaMenu.Desistir)){
               this.jogo.setState(new DesistirState(this.jogo));
+=======
+              if(game.getJogadorDaVez() == 1){
+                   game.setJogadorDaVez(EPlayerColor.black);
+                    game.setState(new JogadorPretoState(game));
+>>>>>>> b47a549e1b4abe0cdef5726e9654d54b6c3bb35f
+               }
+                else{
+                   this.jogo.setJogadorDaVez(EPlayerColor.white);
+                    this.jogo.setState(new JogadorBrancoState(this.jogo));
+               }             
+         }
+         if (jogadaMenu.equals(EJogadaMenu.Empate)){
+                this.empatar(this.jogo);
+                 
+         }
+         if(jogadaMenu.equals(EJogadaMenu.Desistir)){
+<<<<<<< HEAD
+              this.jogo.setState(new DesistirState(this.jogo));
+=======
+              game.setState(new DesistirState(game));
+>>>>>>> 98b622ac6a937b99e3abb6f27c714209a591704d
+>>>>>>> b47a549e1b4abe0cdef5726e9654d54b6c3bb35f
          }
          if(jogadaMenu.equals(EJogadaMenu.Salvar)){
              

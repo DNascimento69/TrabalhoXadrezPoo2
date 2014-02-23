@@ -27,5 +27,9 @@ public class JogadaView {
 		public void mensagemFim (){
 			System.out.println("Fim do programa!");
 		}
+		
+		public void mensagemZeusJogando(){
+			System.out.println("Zeus está fazendo sua jogada");
+		}
 
 }

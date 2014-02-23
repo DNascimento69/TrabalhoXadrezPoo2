@@ -1,5 +1,6 @@
 package p2o2.ifes.serra.controller.cci;
 
+import java.sql.SQLException;
 import p2o2.ifes.serra.model.Enum.EMainMenu;
 import p2o2.ifes.serra.util.LeitorUtil;
 import p2o2.ifes.serra.view.cih.*;
@@ -11,7 +12,7 @@ public class MainController {
 	private EMainMenu opcaoMenuInicial;
 	
 
-	public void start() {
+	public void start() throws ClassNotFoundException, SQLException {
 		
 		mainView.show();
 		

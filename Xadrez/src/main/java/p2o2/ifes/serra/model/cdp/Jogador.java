@@ -1,6 +1,8 @@
 package p2o2.ifes.serra.model.cdp;
 
-public class Jogador {
+import p2o2.ifes.serra.model.cdp.reuse.Model;
+
+public class Jogador extends Model{
 
 	
 	private String nome;
@@ -25,6 +27,8 @@ public class Jogador {
 	public void setPontos(int pontos) {
 		this.pontos = pontos;
 	}
+        
+   
 
 	
 	@Override

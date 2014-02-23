@@ -10,11 +10,11 @@ import p2o2.ifes.serra.strategy.StrategyMoveDiagonalBaixo;
 import p2o2.ifes.serra.strategy.StrategyMoveDiagonalCima;
 import p2o2.ifes.serra.strategy.StrategyMoveInterface;
 
-public class ComandoBispo {
+public class ComandoBispo implements ComandoMovimento {
 	
 	private LinkedList<StrategyMoveInterface> movimentos = new LinkedList<StrategyMoveInterface>();
 	
-	ComandoBispo() {
+	public ComandoBispo() {
 		this.movimentos.add(new StrategyMoveDiagonalCima());
 		this.movimentos.add(new StrategyMoveDiagonalBaixo());
 	}

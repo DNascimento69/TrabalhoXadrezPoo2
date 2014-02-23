@@ -18,7 +18,7 @@ public class ComandoRainha implements ComandoMovimento {
 	
 	private LinkedList<StrategyMoveInterface> movimentos = new LinkedList<StrategyMoveInterface>();
 	
-	ComandoRainha() {
+	public ComandoRainha() {
 		this.movimentos.add(new StrategyMoveDiagonalCima());
 		this.movimentos.add(new StrategyMoveDiagonalBaixo());
 		this.movimentos.add(new StrategyMoveVerticalCima());
@@ -28,11 +28,11 @@ public class ComandoRainha implements ComandoMovimento {
 	}
 
 	public List<String> listaMovimentosPossiveis(Tabuleiro tabuleiro, Peca peca) {
-		List<String> movimentos = new LinkedList<String>();
-		for(Object m: movimentos) {
-			movimentos.addAll( ((StrategyMoveInterface)m).movePool(tabuleiro, peca) );
+		List<String> movimentosPossiveis = new LinkedList<String>();
+		for(StrategyMoveInterface m: movimentos) {
+			movimentosPossiveis.addAll( m.movePool(tabuleiro, peca) );
 		}
-		return movimentos;
+		return movimentosPossiveis;
 	}
 
 	public void modificaLimitaçãoEstrategia(ELimiteCasas l) {

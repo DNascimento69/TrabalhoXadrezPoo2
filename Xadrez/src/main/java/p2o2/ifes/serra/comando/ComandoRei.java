@@ -18,7 +18,7 @@ public class ComandoRei implements ComandoMovimento {
 	
 	private LinkedList<StrategyMoveInterface> movimentos = new LinkedList<StrategyMoveInterface>();
 	
-	ComandoRei() {
+	public ComandoRei() {
 		this.movimentos.add(new StrategyMoveDiagonalCima());
 		this.movimentos.add(new StrategyMoveDiagonalBaixo());
 		this.movimentos.add(new StrategyMoveVerticalCima());

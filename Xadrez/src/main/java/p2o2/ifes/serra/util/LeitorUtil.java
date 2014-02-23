@@ -19,7 +19,7 @@ public class LeitorUtil {
 	
 	// Função adicionada ao original
 	public static String lervalorString() {
-		return leitorOpcao.nextLine();
+		return leitorOpcao.next();
 	}
 	
 }

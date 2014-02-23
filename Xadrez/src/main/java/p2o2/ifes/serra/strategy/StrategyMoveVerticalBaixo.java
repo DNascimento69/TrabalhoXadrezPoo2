@@ -18,9 +18,9 @@ public class StrategyMoveVerticalBaixo implements StrategyMoveInterface {
 		int colunaAuxiliar = Integer.parseInt(peca.getPosicao().substring(1));
 		String jogadaPossivel;
 		
-		int x = 0;
+		int x = 1;
 		boolean parar = false;
-		while ((x < this.limitacaoCasas.getLimiteCasas() && !parar) && (linhaAuxiliar - x >= 0)) {
+		while ((x <= this.limitacaoCasas.getLimiteCasas() && !parar) && (linhaAuxiliar - x >= 0)) {
 			Peca pecaPos = tabuleiro.getPecaPosicao(linhaAuxiliar - x, colunaAuxiliar);
 			jogadaPossivel = Integer.toString(linhaAuxiliar - x) + Integer.toString(colunaAuxiliar);
 			if (pecaPos != null) {
@@ -31,6 +31,7 @@ public class StrategyMoveVerticalBaixo implements StrategyMoveInterface {
 			} else {
 				jogadasValidasLst.add(jogadaPossivel);
 			}
+			x++;
 		}
 	
 	return jogadasValidasLst;
